@@ -21,6 +21,7 @@ type NamespaceMethodMapping = {
   CB: ['GetConfig', 'SetConfig', 'GetStatus', 'Set', 'GetLog'];
   CCT: ['GetConfig', 'SetConfig', 'GetStatus', 'Set', 'Toggle', 'DimUp', 'DimDown', 'DimStop'];
   Cover: ['SetConfig', 'GetConfig', 'GetStatus', 'Calibrate', 'Open', 'Close', 'Stop', 'GoToPosition', 'ResetCounters'];
+  Cury: ['GetConfig', 'SetConfig', 'GetStatus', 'GetVialInfo', 'Set', 'Boost', 'StopBoost', 'SetMode', 'SetAwayMode'];
   DevicePower: ['SetConfig', 'GetConfig', 'GetStatus'];
   EM1: ['SetConfig', 'GetConfig', 'GetStatus', 'CalibrateFrom', 'RevertToFactoryCalibration', 'GetCTTypes'];
   EM1Data: [

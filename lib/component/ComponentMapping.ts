@@ -5,6 +5,7 @@ import CameraZone from './components/CameraZone.js';
 import CircuitBreaker from './components/CircuitBreaker.js';
 import CCT from './components/CCT.js';
 import Cover from './components/Cover.js';
+import Cury from './components/Cury.js';
 import DevicePower from './components/DevicePower.js';
 import EM1 from './components/EM1.js';
 import EM1Data from './components/EM1Data.js';
@@ -45,6 +46,7 @@ export const ComponentWithIdMapping = {
   cb: CircuitBreaker,
   cct: CCT,
   cover: Cover,
+  cury: Cury,
   devicepower: DevicePower,
   em: EnergyMeter,
   emdata: EnergyMeterData,

@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "title": { "en": "Diffuser vial fragrance" },
+  "uiComponent": "sensor",
+  "getable": true,
+  "setable": false
+}

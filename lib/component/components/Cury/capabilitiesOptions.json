@@ -1,0 +1,38 @@
+{
+  "shelly_diffuser_intensity.left": {
+    "title": { "en": "Left intensity" }
+  },
+  "shelly_diffuser_intensity.right": {
+    "title": { "en": "Right intensity" }
+  },
+  "shelly_diffuser_active.left": {
+    "title": { "en": "Left active" }
+  },
+  "shelly_diffuser_active.right": {
+    "title": { "en": "Right active" }
+  },
+  "shelly_diffuser_boost.left": {
+    "title": { "en": "Left boost" }
+  },
+  "shelly_diffuser_boost.right": {
+    "title": { "en": "Right boost" }
+  },
+  "shelly_diffuser_vial_level.left": {
+    "title": { "en": "Left vial level" }
+  },
+  "shelly_diffuser_vial_level.right": {
+    "title": { "en": "Right vial level" }
+  },
+  "shelly_diffuser_vial_fragrance.left": {
+    "title": { "en": "Left fragrance" }
+  },
+  "shelly_diffuser_vial_fragrance.right": {
+    "title": { "en": "Right fragrance" }
+  },
+  "shelly_diffuser_vial_expiration.left": {
+    "title": { "en": "Left expiration" }
+  },
+  "shelly_diffuser_vial_expiration.right": {
+    "title": { "en": "Right expiration" }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "triggers": [
+    {
+      "id": "cury_active_changed",
+      "title": {
+        "en": "Slot active changes"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] active becomes [[state]]"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "checkbox",
+          "title": {
+            "en": "State"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cury_intensity_changed",
+      "title": {
+        "en": "Slot intensity changes"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] intensity changes"
+      },
+      "tokens": [
+        {
+          "name": "intensity",
+          "type": "number",
+          "title": {
+            "en": "Intensity"
+          },
+          "example": 70
+        }
+      ],
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cury_boost_changed",
+      "title": {
+        "en": "Slot boost changes"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] boost becomes [[state]]"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "checkbox",
+          "title": {
+            "en": "State"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cury_vial_level_changed",
+      "title": {
+        "en": "Vial level changes"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] vial level changes"
+      },
+      "tokens": [
+        {
+          "name": "level",
+          "type": "number",
+          "title": {
+            "en": "Level"
+          },
+          "example": 83
+        }
+      ],
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "cury_is_active",
+      "title": {
+        "en": "Slot is active"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] is !{{active|inactive}}"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cury_is_boosting",
+      "title": {
+        "en": "Slot is boosting"
+      },
+      "titleFormatted": {
+        "en": "[[slot]] !{{is|is not}} boosting"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "Left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "Right"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "cury_set_active",
+      "title": {
+        "en": "Set slot active"
+      },
+      "titleFormatted": {
+        "en": "Set [[slot]] active to [[state]]"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "right"
+              }
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "checkbox",
+          "title": {
+            "en": "Active"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cury_set_intensity",
+      "title": {
+        "en": "Set slot intensity"
+      },
+      "titleFormatted": {
+        "en": "Set [[slot]] intensity to [[intensity]]"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "right"
+              }
+            }
+          ]
+        },
+        {
+          "name": "intensity",
+          "type": "range",
+          "title": {
+            "en": "Intensity"
+          },
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "label": "%",
+          "labelMultiplier": 100,
+          "labelDecimals": 0
+        }
+      ]
+    },
+    {
+      "id": "cury_set_boost",
+      "title": {
+        "en": "Set slot boost"
+      },
+      "titleFormatted": {
+        "en": "Set [[slot]] boost to [[state]]"
+      },
+      "args": [
+        {
+          "name": "slot",
+          "type": "dropdown",
+          "title": {
+            "en": "Slot"
+          },
+          "values": [
+            {
+              "id": "left",
+              "title": {
+                "en": "left"
+              }
+            },
+            {
+              "id": "right",
+              "title": {
+                "en": "right"
+              }
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "type": "checkbox",
+          "title": {
+            "en": "State"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -215,4 +215,9 @@ export abstract class ComponentWithId<
     const capabilityId = this.getCapabilityId(homeyDevice, homeyCapability);
     await safeSetCapabilityValue(homeyDevice, capabilityId, value);
   }
+
+  protected getCapability(homeyDevice: ShellyLocalDevice, homeyCapability: string): unknown {
+    const capabilityId = this.getCapabilityId(homeyDevice, homeyCapability);
+    return homeyDevice.getCapabilityValue(capabilityId);
+  }
 }

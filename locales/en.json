@@ -33,6 +33,9 @@
       "safety_locked": "Safety switch is in lock position",
       "remote_disabled": "Breaker was tripped locally and cannot be reset remotely"
     },
+    "Cury": {
+      "no_vial": "No vial present"
+    },
     "Light": {
       "invalid_night_mode": {
         "end": "Invalid end time for Light - Night Mode",
