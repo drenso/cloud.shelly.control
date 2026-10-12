@@ -1,0 +1,241 @@
+[
+  {
+    "key": "ble",
+    "status": {
+      "addr": "58:e6:c5:06:5b:36,p"
+    },
+    "config": {
+      "rpc": {
+        "enable": false
+      }
+    }
+  },
+  {
+    "key": "bthome",
+    "status": {},
+    "config": {}
+  },
+  {
+    "key": "cloud",
+    "status": {
+      "connected": false
+    },
+    "config": {
+      "enable": false,
+      "server": "iot.shelly.cloud:6012/jrpc"
+    }
+  },
+  {
+    "key": "cury:0",
+    "status": {
+      "id": 0,
+      "slots": {
+        "left": {
+          "intensity": 1,
+          "on": false,
+          "boost": null,
+          "timer": null,
+          "vial": {
+            "level": 100,
+            "serial": "adf5010000c01de0",
+            "name": "Shelly"
+          }
+        },
+        "right": {
+          "intensity": 1,
+          "on": false,
+          "boost": null,
+          "timer": null,
+          "vial": {
+            "level": 100,
+            "serial": "0268020000c01de0",
+            "name": "Amber Dusk"
+          }
+        }
+      },
+      "mode": null,
+      "away_mode": false
+    },
+    "config": {
+      "id": 0,
+      "name": null,
+      "boost_time": 1800,
+      "ui": {
+        "mode": "level",
+        "brightness": 10
+      },
+      "ambient": {
+        "enable": true,
+        "use_vial_color": true,
+        "color": [
+          0,
+          255,
+          0
+        ],
+        "brightness": 100
+      },
+      "initial_state": {
+        "left": "restore_last",
+        "right": "restore_last"
+      },
+      "timer": {
+        "left": {
+          "auto_on": false,
+          "auto_on_delay": 60,
+          "auto_off": false,
+          "auto_off_delay": 60
+        },
+        "right": {
+          "auto_on": false,
+          "auto_on_delay": 60,
+          "auto_off": false,
+          "auto_off_delay": 60
+        }
+      },
+      "auto_heating_on": true
+    }
+  },
+  {
+    "key": "mqtt",
+    "status": {
+      "connected": false
+    },
+    "config": {
+      "enable": false,
+      "server": null,
+      "client_id": "cury-58e6c5065b34",
+      "user": null,
+      "ssl_ca": null,
+      "topic_prefix": "cury-58e6c5065b34",
+      "rpc_ntf": true,
+      "status_ntf": false,
+      "use_client_cert": false,
+      "enable_rpc": true,
+      "enable_control": true
+    }
+  },
+  {
+    "key": "sys",
+    "status": {
+      "mac": "58E6C5065B34",
+      "restart_required": false,
+      "time": "10:21",
+      "unixtime": 1791793266,
+      "last_sync_ts": 1791793216,
+      "uptime": 55,
+      "ram_size": 342128,
+      "ram_free": 156516,
+      "ram_min_free": 135832,
+      "fs_size": 1048576,
+      "fs_free": 581632,
+      "cfg_rev": 11,
+      "kvs_rev": 0,
+      "schedule_rev": 0,
+      "webhook_rev": 0,
+      "btrelay_rev": 0,
+      "available_updates": {},
+      "reset_reason": 1,
+      "utc_offset": 7200
+    },
+    "config": {
+      "device": {
+        "name": null,
+        "mac": "58E6C5065B34",
+        "fw_id": "20260923-075352/2.0.1-ge1a198b",
+        "discoverable": true,
+        "eco_mode": false,
+        "tls_check_cert_validity_time": true,
+        "enhanced_security": false
+      },
+      "location": {
+        "tz": "Europe/Amsterdam",
+        "lat": 52.2332,
+        "lon": 6.8959
+      },
+      "debug": {
+        "level": 2,
+        "file_level": null,
+        "mqtt": {
+          "enable": false
+        },
+        "websocket": {
+          "enable": false
+        },
+        "udp": {
+          "addr": null
+        }
+      },
+      "ui_data": {
+        "device_revision": "1-7"
+      },
+      "rpc_udp": {
+        "dst_addr": null,
+        "listen_port": null
+      },
+      "sntp": {
+        "server": "time.cloudflare.com"
+      },
+      "cfg_rev": 11
+    }
+  },
+  {
+    "key": "wifi",
+    "status": {
+      "sta_ip": "192.168.222.108",
+      "status": "got ip",
+      "ssid": "DrensoDev",
+      "channel": 1,
+      "rssi": -41,
+      "bssid": "76:ac:b9:2c:8c:03",
+      "sta_ip6": [
+        "fe80::5ae6:c5ff:fe06:5b34",
+        "fd03:8586:4012:ec48:5ae6:c5ff:fe06:5b34"
+      ]
+    },
+    "config": {
+      "ap": {
+        "ssid": "Cury-58E6C5065B34",
+        "is_open": true,
+        "enable": false,
+        "range_extender": {
+          "enable": false
+        }
+      },
+      "sta": {
+        "ssid": "DrensoDev",
+        "is_open": false,
+        "enable": true,
+        "ipv4mode": "dhcp",
+        "ip": null,
+        "netmask": null,
+        "gw": null,
+        "nameserver": null
+      },
+      "sta1": {
+        "ssid": null,
+        "is_open": true,
+        "enable": false,
+        "ipv4mode": "dhcp",
+        "ip": null,
+        "netmask": null,
+        "gw": null,
+        "nameserver": null
+      },
+      "roam": {
+        "rssi_thr": -80,
+        "interval": 60
+      }
+    }
+  },
+  {
+    "key": "ws",
+    "status": {
+      "connected": false
+    },
+    "config": {
+      "enable": false,
+      "server": null,
+      "ssl_ca": "ca.pem"
+    }
+  }
+]

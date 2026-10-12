@@ -1,0 +1,22 @@
+{
+  "$extends": ["local"],
+  "name": {
+    "en": "Cury - LAN"
+  },
+  "class": "diffuser",
+  "capabilities": [
+    "shelly_diffuser_active",
+    "shelly_diffuser_intensity",
+    "shelly_diffuser_boost",
+    "shelly_diffuser_vial_level",
+    "shelly_diffuser_vial_fragrance",
+    "shelly_diffuser_vial_expiration",
+    "alarm_generic",
+    "shelly_errors"
+  ],
+  "images": {
+    "small": "/assets/drivers/cury/images/small.png",
+    "large": "/assets/drivers/cury/images/large.png",
+    "xlarge": "/assets/drivers/cury/images/xlarge.png"
+  }
+}
