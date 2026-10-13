@@ -67,11 +67,7 @@
       "ambient": {
         "enable": true,
         "use_vial_color": true,
-        "color": [
-          0,
-          255,
-          0
-        ],
+        "color": [0, 255, 0],
         "brightness": 100
       },
       "initial_state": {
@@ -187,10 +183,7 @@
       "channel": 1,
       "rssi": -41,
       "bssid": "76:ac:b9:2c:8c:03",
-      "sta_ip6": [
-        "fe80::5ae6:c5ff:fe06:5b34",
-        "fd03:8586:4012:ec48:5ae6:c5ff:fe06:5b34"
-      ]
+      "sta_ip6": ["fe80::5ae6:c5ff:fe06:5b34", "fd03:8586:4012:ec48:5ae6:c5ff:fe06:5b34"]
     },
     "config": {
       "ap": {
