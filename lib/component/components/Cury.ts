@@ -390,5 +390,96 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
     await homeyDevice.updateErrors(this.getComponentKey(), errors);
   }
 
-  public async onConfigUpdate(_homeyDevice: ShellyLocalDevice, _config: CuryConfig): Promise<void> {}
+  public async onConfigUpdate(homeyDevice: ShellyLocalDevice, config: CuryConfig): Promise<void> {
+    const newSettings: RecursivePartial<CuryHomeySettings, AllowedPrimitives> = {};
+
+    newSettings['Cury:boost_time'] = config.boost_time;
+    newSettings['Cury:auto_heating_on'] = config.auto_heating_on;
+
+    newSettings['Cury:ui.brightness'] = config.ui.brightness;
+    newSettings['Cury:ui.mode'] = config.ui.mode;
+
+    newSettings['Cury:ambient.enable'] = config.ambient.enable;
+    newSettings['Cury:ambient.use_vial_color'] = config.ambient.use_vial_color;
+    const [r, g, b] = config.ambient.color;
+    newSettings['Cury:ambient.color.r'] = r;
+    newSettings['Cury:ambient.color.g'] = g;
+    newSettings['Cury:ambient.color.b'] = b;
+    newSettings['Cury:ambient.brightness'] = config.ambient.brightness;
+
+    newSettings['Cury:initial_state.left'] = config.initial_state.left;
+    newSettings['Cury:initial_state.right'] = config.initial_state.right;
+
+    await homeyDevice.setComponentSettings(this.namespace, this.id, newSettings);
+  }
+
+  public async handleSettings(
+    _homeyDevice: ShellyLocalDevice,
+    { changedKeys, newSettings }: SettingsEvent<CuryHomeySettings>,
+  ): Promise<boolean> {
+    const changedConfig: RecursivePartial<CuryConfig, AllowedPrimitives> = {};
+
+    if (changedKeys.includes('Cury:boost_time')) {
+      changedConfig.boost_time = newSettings['Cury:boost_time'];
+    }
+
+    if (changedKeys.includes('Cury:auto_heating_on')) {
+      changedConfig.auto_heating_on = newSettings['Cury:auto_heating_on'];
+    }
+
+    if (changedKeys.includes('Cury:ui.brightness')) {
+      changedConfig.ui ??= {};
+      changedConfig.ui.brightness = newSettings['Cury:ui.brightness'];
+    }
+
+    if (changedKeys.includes('Cury:ui.mode')) {
+      changedConfig.ui ??= {};
+      changedConfig.ui.mode = newSettings['Cury:ui.mode'];
+    }
+
+    if (changedKeys.includes('Cury:ambient.enable')) {
+      changedConfig.ambient ??= {};
+      changedConfig.ambient.enable = newSettings['Cury:ambient.enable'];
+    }
+
+    if (changedKeys.includes('Cury:ambient.use_vial_color')) {
+      changedConfig.ambient ??= {};
+      changedConfig.ambient.use_vial_color = newSettings['Cury:ambient.use_vial_color'];
+    }
+
+    if (changedKeys.includes('Cury:ambient.brightness')) {
+      changedConfig.ambient ??= {};
+      changedConfig.ambient.brightness = newSettings['Cury:ambient.brightness'];
+    }
+
+    if (
+      changedKeys.includes('Cury:ambient.color.r') ||
+      changedKeys.includes('Cury:ambient.color.g') ||
+      changedKeys.includes('Cury:ambient.color.b')
+    ) {
+      changedConfig.ambient ??= {};
+      changedConfig.ambient.color = [
+        newSettings['Cury:ambient.color.r'],
+        newSettings['Cury:ambient.color.g'],
+        newSettings['Cury:ambient.color.b'],
+      ];
+    }
+
+    if (changedKeys.includes('Cury:initial_state.left')) {
+      changedConfig.initial_state ??= {};
+      changedConfig.initial_state.left = newSettings['Cury:initial_state.left'];
+    }
+
+    if (changedKeys.includes('Cury:initial_state.right')) {
+      changedConfig.initial_state ??= {};
+      changedConfig.initial_state.right = newSettings['Cury:initial_state.right'];
+    }
+
+    if (Object.keys(changedConfig).length <= 0) {
+      return false;
+    }
+
+    const result = await this.SetConfig(this.device.getChannel(), { config: changedConfig });
+    return result.result.restart_required;
+  }
 }

@@ -1,5 +1,188 @@
 [
   {
+    "id": "Cury:boost_time",
+    "type": "number",
+    "label": {
+      "en": "Boost duration"
+    },
+    "value": 1800,
+    "min": 60,
+    "max": 86400,
+    "step": 1,
+    "units": "s"
+  },
+  {
+    "id": "Cury:auto_heating_on",
+    "type": "checkbox",
+    "label": {
+      "en": "Vial auto switching"
+    },
+    "hint": {
+      "en": "Automatically set the other vial to active if the current one becomes empty."
+    },
+    "value": true
+  },
+  {
+    "id": "Cury:initial_state.left",
+    "type": "dropdown",
+    "label": {
+      "en": "Left startup state"
+    },
+    "value": "restore_last",
+    "values": [
+      {
+        "id": "restore_last",
+        "label": {
+          "en": "Restore last"
+        }
+      },
+      {
+        "id": "on",
+        "label": {
+          "en": "On"
+        }
+      },
+      {
+        "id": "off",
+        "label": {
+          "en": "Off"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Cury:initial_state.right",
+    "type": "dropdown",
+    "label": {
+      "en": "Right startup state"
+    },
+    "value": "restore_last",
+    "values": [
+      {
+        "id": "restore_last",
+        "label": {
+          "en": "Restore last"
+        }
+      },
+      {
+        "id": "on",
+        "label": {
+          "en": "On"
+        }
+      },
+      {
+        "id": "off",
+        "label": {
+          "en": "Off"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Cury:ui.mode",
+    "type": "dropdown",
+    "label": {
+      "en": "Indicator LED - Mode"
+    },
+    "value": "level",
+    "values": [
+      {
+        "id": "off",
+        "label": {
+          "en": "Off"
+        }
+      },
+      {
+        "id": "level",
+        "label": {
+          "en": "Vial level"
+        }
+      },
+      {
+        "id": "intensity",
+        "label": {
+          "en": "Intensity"
+        }
+      }
+    ]
+  },
+  {
+    "id": "Cury:ui.brightness",
+    "type": "number",
+    "label": {
+      "en": "Indicator LED - Brightness"
+    },
+    "value": 10,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "%"
+  },
+  {
+    "id": "Cury:ambient.enable",
+    "type": "checkbox",
+    "label": {
+      "en": "Ambient light - Enabled"
+    },
+    "value": true
+  },
+  {
+    "id": "Cury:ambient.use_vial_color",
+    "type": "checkbox",
+    "label": {
+      "en": "Ambient light - Use vial color"
+    },
+    "hint": {
+      "en": "Change the ambient light color to that of the vial when it becomes active."
+    },
+    "value": true
+  },
+  {
+    "id": "Cury:ambient.color.r",
+    "type": "number",
+    "label": {
+      "en": "Ambient light - Color R"
+    },
+    "value": 255,
+    "min": 0,
+    "max": 255,
+    "step": 1
+  },
+  {
+    "id": "Cury:ambient.color.g",
+    "type": "number",
+    "label": {
+      "en": "Ambient light - Color G"
+    },
+    "value": 255,
+    "min": 0,
+    "max": 255,
+    "step": 1
+  },
+  {
+    "id": "Cury:ambient.color.b",
+    "type": "number",
+    "label": {
+      "en": "Ambient light - Color B"
+    },
+    "value": 255,
+    "min": 0,
+    "max": 255,
+    "step": 1
+  },
+  {
+    "id": "Cury:ambient.brightness",
+    "type": "number",
+    "label": {
+      "en": "Ambient light - Brightness"
+    },
+    "value": 10,
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "units": "%"
+  },
+  {
     "$extends": "installBleForwardingScript"
   },
   {
