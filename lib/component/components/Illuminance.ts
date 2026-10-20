@@ -99,7 +99,7 @@ export default class Illuminance extends ComponentWithId<
       ['illumination', 'shelly_illumination'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 

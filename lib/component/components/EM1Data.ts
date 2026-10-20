@@ -115,9 +115,9 @@ export default class EM1Data extends ComponentWithId<'EM1Data', EM1DataStatus, E
       const absoluteEnergy = status.total_act_energy ?? this.status.total_act_energy ?? 0;
       const exportedEnergy = status.total_act_ret_energy ?? this.status.total_act_ret_energy ?? 0;
       const importedEnergy = absoluteEnergy - exportedEnergy;
-      await this.setCapability(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

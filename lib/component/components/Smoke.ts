@@ -64,7 +64,7 @@ export default class Smoke extends ComponentWithId<'Smoke', SmokeStatus, SmokeCo
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: SmokeStatus): Promise<void> {
     if (status.alarm !== undefined) {
-      await this.setCapability(homeyDevice, 'alarm_smoke', status.alarm);
+      await this.setCapabilityValue(homeyDevice, 'alarm_smoke', status.alarm);
     }
   }
 

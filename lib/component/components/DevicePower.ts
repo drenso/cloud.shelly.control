@@ -88,7 +88,7 @@ export default class DevicePower extends ComponentWithId<
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: DevicePowerStatus): Promise<void> {
     if (status.battery?.percent !== undefined) {
-      await this.setCapability(homeyDevice, 'measure_battery', status.battery.percent);
+      await this.setCapabilityValue(homeyDevice, 'measure_battery', status.battery.percent);
     }
 
     if (this.status.external !== undefined) {

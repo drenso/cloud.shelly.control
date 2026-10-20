@@ -106,7 +106,7 @@ export default class EM1 extends ComponentWithId<'EM1', EM1Status, EM1Config, EM
       ['pf', 'shelly_power_factor'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
 
       // Use this.status because partial status updates also have errors set to undefined

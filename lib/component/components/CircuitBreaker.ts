@@ -176,13 +176,13 @@ export default class CircuitBreaker extends ComponentWithId<
     ] as const) {
       const value = status[statusKey];
       if (value !== undefined) {
-        await this.setCapability(homeyDevice, capabilityId, value);
+        await this.setCapabilityValue(homeyDevice, capabilityId, value);
       }
     }
 
     const safety = status['safety'];
     if (safety !== undefined) {
-      await this.setCapability(homeyDevice, 'shelly_remote_lock', safety);
+      await this.setCapabilityValue(homeyDevice, 'shelly_remote_lock', safety);
       await safeTriggerDeviceCard(homeyDevice, 'shelly_remote_lock_changed', { value: safety }, { value: safety });
     }
 

@@ -128,7 +128,7 @@ export default class Voltmeter extends ComponentWithId<
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<VoltmeterStatus>): Promise<void> {
     if (status.voltage !== undefined) {
-      await this.setCapability(homeyDevice, 'measure_voltage', status.voltage);
+      await this.setCapabilityValue(homeyDevice, 'measure_voltage', status.voltage);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

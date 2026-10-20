@@ -270,15 +270,15 @@ export default class CCT extends ComponentWithId<'CCT', CCTStatus, CCTConfig, CC
     status: RecursivePartial<CCTStatus, AllowedPrimitives>,
   ): Promise<void> {
     if (status.brightness !== undefined) {
-      await this.setCapability(homeyDevice, 'dim', status.brightness / 100);
+      await this.setCapabilityValue(homeyDevice, 'dim', status.brightness / 100);
     }
     if (status.ct !== undefined) {
       const [minCt, maxCt] = this.config.ct_range ?? [2700, 6500];
-      await this.setCapability(homeyDevice, 'light_temperature', 1 - (status.ct - minCt) / (maxCt - minCt));
+      await this.setCapabilityValue(homeyDevice, 'light_temperature', 1 - (status.ct - minCt) / (maxCt - minCt));
     }
     if (status.aenergy?.total !== undefined) {
       const importedEnergy = status.aenergy.total;
-      await this.setCapability(homeyDevice, 'meter_power', importedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power', importedEnergy / 1000);
     }
 
     // Simple capabilities
@@ -289,7 +289,7 @@ export default class CCT extends ComponentWithId<'CCT', CCTStatus, CCTConfig, CC
       ['current', 'measure_current'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 

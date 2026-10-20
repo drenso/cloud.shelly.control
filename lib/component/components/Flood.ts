@@ -76,7 +76,7 @@ export default class Flood extends ComponentWithId<'Flood', FloodStatus, FloodCo
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: FloodStatus): Promise<void> {
     if (status.alarm !== undefined) {
-      await this.setCapability(homeyDevice, 'alarm_water', status.alarm);
+      await this.setCapabilityValue(homeyDevice, 'alarm_water', status.alarm);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

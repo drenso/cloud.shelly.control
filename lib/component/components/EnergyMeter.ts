@@ -441,7 +441,7 @@ export default class EnergyMeter extends ComponentWithId<
       const homeyCapability = SIMPLE_CAPABILITY_MAPPING[statusPostfix as keyof typeof SIMPLE_CAPABILITY_MAPPING];
       const statusKey = `total_${statusPostfix}`;
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 
@@ -451,7 +451,7 @@ export default class EnergyMeter extends ComponentWithId<
         const statusKey = `${phase}_${statusPostfix}`;
         const homeyCapability = `${baseHomeyCapability}.phase_${phase}`;
         if (status[statusKey] !== undefined) {
-          await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+          await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
         }
       }
     }
@@ -493,8 +493,8 @@ export default class EnergyMeter extends ComponentWithId<
     }
 
     this.oldFlags = combinedFlags;
-    await this.setCapability(homeyDevice, 'alarm_generic.flags', combinedFlags.length > 0);
-    await this.setCapability(homeyDevice, 'shelly_flags', combinedFlags.join(', '));
+    await this.setCapabilityValue(homeyDevice, 'alarm_generic.flags', combinedFlags.length > 0);
+    await this.setCapabilityValue(homeyDevice, 'shelly_flags', combinedFlags.join(', '));
   }
 
   public async onConfigUpdate(homeyDevice: ShellyLocalDevice, config: EnergyMeterConfig): Promise<void> {

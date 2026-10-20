@@ -159,7 +159,7 @@ export default class PM1 extends ComponentWithId<'PM1', PM1Status, PM1Config, PM
       ['freq', 'measure_frequency'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 
@@ -167,9 +167,9 @@ export default class PM1 extends ComponentWithId<'PM1', PM1Status, PM1Config, PM
       const absoluteEnergy = status.aenergy?.total ?? this.status.aenergy?.total ?? 0;
       const exportedEnergy = status.ret_aenergy?.total ?? this.status.ret_aenergy?.total ?? 0;
       const importedEnergy = absoluteEnergy - exportedEnergy;
-      await this.setCapability(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

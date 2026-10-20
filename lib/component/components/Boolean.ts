@@ -132,7 +132,7 @@ export default class Boolean extends ComponentWithId<'Boolean', BooleanStatus, B
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<BooleanStatus>): Promise<void> {
     if (status.value !== undefined) {
-      await this.setCapability(homeyDevice, 'virtual_boolean', status.value);
+      await this.setCapabilityValue(homeyDevice, 'virtual_boolean', status.value);
       await safeTriggerDeviceCard(
         homeyDevice,
         'virtual_boolean_changed',

@@ -92,7 +92,7 @@ export default class Humidity extends ComponentWithId<
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<HumidityStatus>): Promise<void> {
     if (status.rh !== undefined) {
-      await this.setCapability(homeyDevice, 'measure_humidity', status.rh);
+      await this.setCapabilityValue(homeyDevice, 'measure_humidity', status.rh);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

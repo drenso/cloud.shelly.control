@@ -301,19 +301,19 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
     for (const slot of ['left', 'right'] as const) {
       const slotStatus = status.slots?.[slot];
       if (!slotStatus) {
-        await this.setCapability(homeyDevice, `shelly_diffuser_vial_level.${slot}`, null);
-        await this.setCapability(homeyDevice, `shelly_diffuser_vial_fragrance.${slot}`, null);
-        await this.setCapability(homeyDevice, `shelly_diffuser_vial_expiration.${slot}`, null);
-        await this.setCapability(homeyDevice, `shelly_diffuser_intensity.${slot}`, null);
-        await this.setCapability(homeyDevice, `shelly_diffuser_active.${slot}`, false);
-        await this.setCapability(homeyDevice, `shelly_diffuser_boost.${slot}`, false);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_level.${slot}`, null);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_fragrance.${slot}`, null);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_expiration.${slot}`, null);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`, null);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_active.${slot}`, false);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_boost.${slot}`, false);
         await homeyDevice.unsetStoreValue(`shelly_curry_${slot}_serial`);
         continue;
       }
 
       if (slotStatus.intensity !== undefined) {
         const newIntensity = slotStatus.intensity / 100;
-        if (this.getCapability(homeyDevice, `shelly_diffuser_intensity.${slot}`) !== newIntensity) {
+        if (this.getCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`) !== newIntensity) {
           await safeTriggerDeviceCard(
             homeyDevice,
             'cury_intensity_changed',
@@ -321,28 +321,28 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
             { slot },
           );
         }
-        await this.setCapability(homeyDevice, `shelly_diffuser_intensity.${slot}`, slotStatus.intensity / 100);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`, slotStatus.intensity / 100);
       }
 
       if (slotStatus.on !== undefined) {
-        if (this.getCapability(homeyDevice, `shelly_diffuser_active.${slot}`) !== slotStatus.on) {
+        if (this.getCapabilityValue(homeyDevice, `shelly_diffuser_active.${slot}`) !== slotStatus.on) {
           await safeTriggerDeviceCard(homeyDevice, 'cury_active_changed', undefined, {
             slot,
             state: slotStatus.on,
           });
         }
-        await this.setCapability(homeyDevice, `shelly_diffuser_active.${slot}`, slotStatus.on);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_active.${slot}`, slotStatus.on);
       }
 
       if (slotStatus.boost !== undefined) {
         const boosting = slotStatus.boost !== null;
-        if (this.getCapability(homeyDevice, `shelly_diffuser_boost.${slot}`) !== boosting) {
+        if (this.getCapabilityValue(homeyDevice, `shelly_diffuser_boost.${slot}`) !== boosting) {
           await safeTriggerDeviceCard(homeyDevice, 'cury_boost_changed', undefined, {
             slot,
             state: boosting,
           });
         }
-        await this.setCapability(homeyDevice, `shelly_diffuser_boost.${slot}`, boosting);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_boost.${slot}`, boosting);
       }
 
       const vial = slotStatus.vial;
@@ -350,13 +350,13 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
       if (vial !== undefined) {
         const level = vial.level === -1 ? null : vial.level;
 
-        if (level !== null && this.getCapability(homeyDevice, `shelly_diffuser_vial_level.${slot}`) !== level) {
+        if (level !== null && this.getCapabilityValue(homeyDevice, `shelly_diffuser_vial_level.${slot}`) !== level) {
           await safeTriggerDeviceCard(homeyDevice, 'cury_vial_level_changed', { level }, { slot });
         }
 
-        await this.setCapability(homeyDevice, `shelly_diffuser_vial_level.${slot}`, level);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_level.${slot}`, level);
 
-        await this.setCapability(homeyDevice, `shelly_diffuser_vial_fragrance.${slot}`, vial.name);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_fragrance.${slot}`, vial.name);
 
         if (homeyDevice.getStoreValue(`shelly_curry_${slot}_serial`) !== vial.serial) {
           const vialInfoResponse = await this.GetVialInfo(this.device.getChannel(), { slot });
@@ -364,7 +364,7 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
           const slotInfo = vialInfoResponse.result;
 
           const value = slotInfo?.exp_date ?? null;
-          await this.setCapability(homeyDevice, `shelly_diffuser_vial_expiration.${slot}`, value);
+          await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_expiration.${slot}`, value);
 
           await homeyDevice
             .setStoreValue(`shelly_curry_${slot}_serial`, slotInfo?.serial)

@@ -211,12 +211,16 @@ export abstract class ComponentWithId<
     return homeyDevice.componentCounts.get(this.namespace) === 1 ? homeyCapability : `${homeyCapability}.${this.id}`;
   }
 
-  public async setCapability(homeyDevice: ShellyLocalDevice, homeyCapability: string, value: unknown): Promise<void> {
+  protected async setCapabilityValue(
+    homeyDevice: ShellyLocalDevice,
+    homeyCapability: string,
+    value: unknown,
+  ): Promise<void> {
     const capabilityId = this.getCapabilityId(homeyDevice, homeyCapability);
     await safeSetCapabilityValue(homeyDevice, capabilityId, value);
   }
 
-  protected getCapability(homeyDevice: ShellyLocalDevice, homeyCapability: string): unknown {
+  protected getCapabilityValue(homeyDevice: ShellyLocalDevice, homeyCapability: string): unknown {
     const capabilityId = this.getCapabilityId(homeyDevice, homeyCapability);
     return homeyDevice.getCapabilityValue(capabilityId);
   }

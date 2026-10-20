@@ -130,7 +130,7 @@ export default class Storage extends ComponentWithId<'Storage', StorageStatus, S
           statusValue = Math.round((statusValue as number) / 1024 / 1024);
         }
       }
-      await this.setCapability(homeyDevice, homeyCapability, statusValue);
+      await this.setCapabilityValue(homeyDevice, homeyCapability, statusValue);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

@@ -265,30 +265,30 @@ export default class RGBCCT extends ComponentWithId<'RGBCCT', RGBCCTStatus, RGBC
     status: RecursivePartial<RGBCCTStatus, AllowedPrimitives>,
   ): Promise<void> {
     if (status.brightness !== undefined) {
-      await this.setCapability(homeyDevice, 'dim', status.brightness / 100);
+      await this.setCapabilityValue(homeyDevice, 'dim', status.brightness / 100);
     }
     if (status.ct !== undefined) {
-      await this.setCapability(homeyDevice, 'light_temperature', 1 - (status.ct - 2700) / (6500 - 2700));
+      await this.setCapabilityValue(homeyDevice, 'light_temperature', 1 - (status.ct - 2700) / (6500 - 2700));
     }
     if (status.rgb !== undefined) {
       const hsv = convert.rgb.hsv(status.rgb[0], status.rgb[1], status.rgb[2]);
-      await this.setCapability(homeyDevice, 'light_hue', hsv[0] / 360);
-      await this.setCapability(homeyDevice, 'light_saturation', hsv[1] / 100);
+      await this.setCapabilityValue(homeyDevice, 'light_hue', hsv[0] / 360);
+      await this.setCapabilityValue(homeyDevice, 'light_saturation', hsv[1] / 100);
     }
     if (status.mode !== undefined) {
-      await this.setCapability(homeyDevice, 'light_mode', status.mode === 'rgb' ? 'color' : 'temperature');
+      await this.setCapabilityValue(homeyDevice, 'light_mode', status.mode === 'rgb' ? 'color' : 'temperature');
     }
     if (status.aenergy?.total !== undefined) {
       const importedEnergy = status.aenergy.total;
-      await this.setCapability(homeyDevice, 'meter_power', importedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power', importedEnergy / 1000);
     }
 
     // Simple capabilities
     if (status.output !== undefined) {
-      await this.setCapability(homeyDevice, 'onoff', status.output);
+      await this.setCapabilityValue(homeyDevice, 'onoff', status.output);
     }
     if (status.apower !== undefined) {
-      await this.setCapability(homeyDevice, 'measure_power', status.apower);
+      await this.setCapabilityValue(homeyDevice, 'measure_power', status.apower);
     }
   }
 

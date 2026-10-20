@@ -143,23 +143,23 @@ export default class EnergyMeterData extends ComponentWithId<
       const energy = status[`${phase}_total_act_energy`];
       if (energy !== undefined) {
         // Convert from Wh to kWh
-        await this.setCapability(homeyDevice, `meter_power.phase_${phase}`, energy / 1000);
+        await this.setCapabilityValue(homeyDevice, `meter_power.phase_${phase}`, energy / 1000);
       }
       const returnedEnergy = status[`${phase}_total_act_ret_energy`];
       if (returnedEnergy !== undefined) {
         // Convert from Wh to kWh
-        await this.setCapability(homeyDevice, `meter_power.returned.phase_${phase}`, returnedEnergy / 1000);
+        await this.setCapabilityValue(homeyDevice, `meter_power.returned.phase_${phase}`, returnedEnergy / 1000);
       }
     }
 
     if (status.total_act !== undefined) {
       // Convert from Wh to kWh
-      await this.setCapability(homeyDevice, 'meter_power', status.total_act / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power', status.total_act / 1000);
     }
 
     if (status.total_act_ret !== undefined) {
       // Convert from Wh to kWh
-      await this.setCapability(homeyDevice, 'meter_power.returned', status.total_act_ret / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.returned', status.total_act_ret / 1000);
     }
   }
 

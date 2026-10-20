@@ -135,7 +135,7 @@ export default class Enum extends ComponentWithId<'Enum', EnumStatus, EnumConfig
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<EnumStatus>): Promise<void> {
     if (status.value !== undefined) {
-      await this.setCapability(homeyDevice, 'virtual_enum', status.value);
+      await this.setCapabilityValue(homeyDevice, 'virtual_enum', status.value);
       await safeTriggerDeviceCard(
         homeyDevice,
         'virtual_enum_changed',

@@ -114,7 +114,7 @@ export default class Number extends ComponentWithId<'Number', NumberStatus, Numb
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<NumberStatus>): Promise<void> {
     if (status.value !== undefined) {
-      await this.setCapability(homeyDevice, 'virtual_number', status.value);
+      await this.setCapabilityValue(homeyDevice, 'virtual_number', status.value);
       await safeTriggerDeviceCard(
         homeyDevice,
         'virtual_number_changed',

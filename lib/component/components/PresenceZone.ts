@@ -107,13 +107,13 @@ export default class PresenceZone extends ComponentWithId<
 
     this.presenceMitt.on('presence', async state => {
       for (const homeyDevice of this.homeyDevices) {
-        await this.setCapability(homeyDevice, 'alarm_presence', state);
+        await this.setCapabilityValue(homeyDevice, 'alarm_presence', state);
       }
     });
     this.presenceMitt.on('detailed_presence', async objects => {
       for (const homeyDevice of this.homeyDevices) {
-        await this.setCapability(homeyDevice, 'shelly_presence_count', objects.length);
-        await this.setCapability(homeyDevice, 'alarm_presence', objects.length > 0);
+        await this.setCapabilityValue(homeyDevice, 'shelly_presence_count', objects.length);
+        await this.setCapabilityValue(homeyDevice, 'alarm_presence', objects.length > 0);
         const countUpdate = { zone: this.id, value: objects.length };
         await safeTriggerDeviceCard(homeyDevice, 'presence_count_changed', countUpdate, { zone: this.id });
       }
@@ -206,10 +206,10 @@ export default class PresenceZone extends ComponentWithId<
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: PresenceZoneStatus): Promise<void> {
     if (status.value !== undefined) {
-      await this.setCapability(homeyDevice, 'alarm_presence', status.value);
+      await this.setCapabilityValue(homeyDevice, 'alarm_presence', status.value);
     }
     if (status.num_objects !== undefined) {
-      await this.setCapability(homeyDevice, 'shelly_presence_count', status.num_objects);
+      await this.setCapabilityValue(homeyDevice, 'shelly_presence_count', status.num_objects);
     }
   }
 

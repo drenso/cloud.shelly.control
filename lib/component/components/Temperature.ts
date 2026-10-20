@@ -78,7 +78,7 @@ export default class Temperature extends ComponentWithId<
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<TemperatureStatus>): Promise<void> {
     const temperature = status.tC;
     if (temperature !== undefined) {
-      await this.setCapability(homeyDevice, 'measure_temperature', temperature);
+      await this.setCapabilityValue(homeyDevice, 'measure_temperature', temperature);
       if (temperature !== null) {
         await safeTriggerDeviceCard(
           homeyDevice,

@@ -282,12 +282,12 @@ export default class Camera extends ComponentWithId<'Camera', CameraStatus, Came
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: CameraStatus): Promise<void> {
     for (const [statusKey, homeyCapability] of this.capabilityMap) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 
     if (status.privacy !== undefined) {
-      await this.setCapability(homeyDevice, 'onoff.privacy', !status.privacy);
+      await this.setCapabilityValue(homeyDevice, 'onoff.privacy', !status.privacy);
     }
 
     // Use this.status because partial status updates also have errors set to undefined

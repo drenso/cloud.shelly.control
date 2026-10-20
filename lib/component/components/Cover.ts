@@ -712,25 +712,25 @@ export default class Cover extends ComponentWithId<'Cover', CoverStatus, CoverCo
         calibrating: null,
       } as const satisfies Record<CoverStatus['state'], 'up' | 'idle' | 'down' | null>;
       const value = stateMapping[state];
-      await this.setCapability(homeyDevice, 'windowcoverings_state', value);
+      await this.setCapabilityValue(homeyDevice, 'windowcoverings_state', value);
     }
 
     const currentPos = status.current_pos;
     if (currentPos === null) {
-      await this.setCapability(homeyDevice, 'windowcoverings_set', currentPos);
+      await this.setCapabilityValue(homeyDevice, 'windowcoverings_set', currentPos);
     } else if (currentPos !== undefined) {
       const value = currentPos / 100;
-      await this.setCapability(homeyDevice, 'windowcoverings_set', value);
+      await this.setCapabilityValue(homeyDevice, 'windowcoverings_set', value);
     }
 
     const slatPos = status.slat_pos;
     if (slatPos !== undefined) {
       const value = slatPos / 100;
-      await this.setCapability(homeyDevice, 'windowcoverings_tilt_set', value);
+      await this.setCapabilityValue(homeyDevice, 'windowcoverings_tilt_set', value);
     }
 
     if (status.aenergy?.total !== undefined) {
-      await this.setCapability(homeyDevice, 'meter_power', status.aenergy.total / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power', status.aenergy.total / 1000);
     }
 
     const temperature = status.temperature?.tC;
@@ -755,7 +755,7 @@ export default class Cover extends ComponentWithId<'Cover', CoverStatus, CoverCo
       ['pf', 'shelly_power_factor'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 

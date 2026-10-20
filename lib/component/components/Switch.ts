@@ -287,7 +287,7 @@ export default class Switch extends ComponentWithId<'Switch', SwitchStatus, Swit
       ['freq', 'measure_frequency'],
     ] as const) {
       if (status[statusKey] !== undefined) {
-        await this.setCapability(homeyDevice, homeyCapability, status[statusKey]);
+        await this.setCapabilityValue(homeyDevice, homeyCapability, status[statusKey]);
       }
     }
 
@@ -297,9 +297,9 @@ export default class Switch extends ComponentWithId<'Switch', SwitchStatus, Swit
       const absoluteEnergy = status.aenergy?.total ?? this.status.aenergy?.total ?? 0;
       const exportedEnergy = status.ret_aenergy?.total ?? this.status.ret_aenergy?.total ?? 0;
       const importedEnergy = absoluteEnergy - exportedEnergy;
-      await this.setCapability(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
-      await this.setCapability(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.imported', importedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.exported', exportedEnergy / 1000);
+      await this.setCapabilityValue(homeyDevice, 'meter_power.total', absoluteEnergy / 1000);
     }
 
     const temperature = status.temperature?.tC;
