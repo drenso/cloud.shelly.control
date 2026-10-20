@@ -307,7 +307,7 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
         await this.setCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`, null);
         await this.setCapabilityValue(homeyDevice, `shelly_diffuser_active.${slot}`, false);
         await this.setCapabilityValue(homeyDevice, `shelly_diffuser_boost.${slot}`, false);
-        await homeyDevice.unsetStoreValue(`shelly_curry_${slot}_serial`);
+        await homeyDevice.unsetStoreValue(`shelly_cury_${slot}_serial`);
         continue;
       }
 
@@ -358,7 +358,7 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
 
         await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_fragrance.${slot}`, vial.name);
 
-        if (homeyDevice.getStoreValue(`shelly_curry_${slot}_serial`) !== vial.serial) {
+        if (homeyDevice.getStoreValue(`shelly_cury_${slot}_serial`) !== vial.serial) {
           const vialInfoResponse = await this.GetVialInfo(this.device.getChannel(), { slot });
 
           const slotInfo = vialInfoResponse.result;
@@ -367,8 +367,8 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
           await this.setCapabilityValue(homeyDevice, `shelly_diffuser_vial_expiration.${slot}`, value);
 
           await homeyDevice
-            .setStoreValue(`shelly_curry_${slot}_serial`, slotInfo?.serial)
-            .catch(err => homeyDevice.error(`Error while setting shelly_curry_${slot}_serial:`, err));
+            .setStoreValue(`shelly_cury_${slot}_serial`, slotInfo?.serial)
+            .catch(err => homeyDevice.error(`Error while setting shelly_cury_${slot}_serial:`, err));
         }
       }
     }
