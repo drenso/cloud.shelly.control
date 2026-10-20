@@ -321,7 +321,7 @@ export default class Cury extends ComponentWithId<'Cury', CuryStatus, CuryConfig
             { slot },
           );
         }
-        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`, slotStatus.intensity / 100);
+        await this.setCapabilityValue(homeyDevice, `shelly_diffuser_intensity.${slot}`, newIntensity);
       }
 
       if (slotStatus.on !== undefined) {
