@@ -1,0 +1,17 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Overcurrent"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Overcurrent detected"
+  },
+  "insightsTitleFalse": {
+    "en": "Overcurrent no longer detected"
+  },
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/alarm_current.svg"
+}
