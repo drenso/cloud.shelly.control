@@ -24586,6 +24586,389 @@
       "connectivity": [
         "zwave"
       ],
+      "icon": "/drivers/shellywave1pm_zwave/assets/icon.svg",
+      "name": {
+        "en": "Wave 1PM"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "measure_power",
+        "meter_power",
+        "button.restart",
+        "button.reset_meter",
+        "alarm_heat",
+        "alarm_shelly_overcurrent",
+        "alarm_shelly_overvoltage",
+        "hidden.single_button_pressed"
+      ],
+      "zwave": {
+        "manufacturerId": 1120,
+        "productTypeId": [
+          2
+        ],
+        "productId": [
+          132
+        ],
+        "associationGroups": [
+          1
+        ],
+        "learnmode": {
+          "image": "./assets/zwave-learnmode.svg",
+          "instruction": {
+            "en": "Press and hold the S button on the device until the LED turns solid blue. Release the button and press and hold it again (> 2s) until the blue LED starts blinking. Repeat this for step 2 in the pairing process and enter the device key (pincode).",
+            "nl": "Houd de S-knop op het apparaat ingedrukt totdat de LED continu blauw wordt. Laat de knop los en druk er opnieuw op en houd deze ingedrukt (> 2s) totdat de blauwe LED begint te knipperen. Herhaal dit voor stap 2 in het koppelingsproces en voer de apparaatsleutel (pincode) in."
+          }
+        },
+        "unlearnmode": {
+          "image": "./assets/zwave-learnmode.svg",
+          "instruction": {
+            "en": "Press and hold the S button on the device until the LED turns solid blue. Release the button and press and hold it again (> 2s) until the blue LED starts blinking.",
+            "nl": "Houd de S-knop op het apparaat ingedrukt totdat de LED continu blauw wordt. Laat de knop los en druk er opnieuw op en houd deze ingedrukt (> 2s) totdat de blauwe LED begint te knipperen."
+          }
+        }
+      },
+      "images": {
+        "small": "/assets/drivers/shellywave1pm/images/small.png",
+        "large": "/assets/drivers/shellywave1pm/images/large.png",
+        "xlarge": "/assets/drivers/shellywave1pm/images/xlarge.png"
+      },
+      "id": "shellywave1pm_zwave",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Switch-Output Settings",
+            "nl": "Switch-Output instellingen"
+          },
+          "children": [
+            {
+              "id": "zwaveSwitchTypeSW1",
+              "type": "dropdown",
+              "label": {
+                "en": "Switch type SW1",
+                "nl": "Schakelaar type SW1"
+              },
+              "value": "2",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Momentary switch (push button)",
+                    "nl": "Pulsdrukschakelaar (push button)"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Toggle switch (contact closed - ON / contact opened - OFF)",
+                    "nl": "Tuimelschakelaar (contact closed - ON / contact opened - OFF)"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Toggle switch (device changes status when switch changes status)",
+                    "nl": "Tuimelschakelaar (apparaat wijzigt status wanneer schakelaar status wijzigt)"
+                  }
+                }
+              ],
+              "hint": {
+                "en": "Determines the type of switch connected to input 1.",
+                "nl": "Specificeert het type schakelaar dat is aangesloten op input 1."
+              },
+              "zwave": {
+                "index": 1,
+                "size": 1
+              }
+            },
+            {
+              "id": "zwaveRestoreStateO1",
+              "type": "dropdown",
+              "label": {
+                "en": "Restore state of O1 after power failure",
+                "nl": "Herstel status van O1 na stroom uitval"
+              },
+              "value": "0",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Output 1 saves last on/off status and restores it after a power failure",
+                    "nl": "Output 1 hersteld on/off status na stroom uitval"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Output 1 does not save on/off status and does not restore it after a power failure, it remains off",
+                    "nl": "Output 1 is standaard uit na stroom uitval"
+                  }
+                }
+              ],
+              "zwave": {
+                "index": 17,
+                "size": 1
+              }
+            },
+            {
+              "id": "zwaveAutoTimerUnit",
+              "type": "dropdown",
+              "label": {
+                "en": "Auto ON/OFF timer unit",
+                "nl": "Automatisch AAN/UIT timer eenheid"
+              },
+              "value": "0",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Seconds",
+                    "nl": "Seconden"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Milliseconds",
+                    "nl": "Milliseconden"
+                  }
+                }
+              ],
+              "hint": {
+                "en": "Defines the time unit used for the auto ON and OFF timers.",
+                "nl": "Bepaalt de tijdseenheid voor de automatische AAN en UIT timers."
+              },
+              "zwave": {
+                "index": 25,
+                "size": 1
+              }
+            },
+            {
+              "id": "zwaveAutoOffO1",
+              "type": "number",
+              "label": {
+                "en": "Auto OFF O1 with timer",
+                "nl": "Automatisch UIT O1 met timer"
+              },
+              "value": 0,
+              "attr": {
+                "min": 0,
+                "max": 32535
+              },
+              "units": {
+                "en": "(m)s",
+                "nl": "(m)s"
+              },
+              "hint": {
+                "en": "Defines the time after which output 1 is turned off automatically. Note: setting this parameter to zero will disable automatically turning off.",
+                "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch uitzet. Let op: het instellen van deze parameter op nul schakelt het automatisch uit gaan uit."
+              },
+              "zwave": {
+                "index": 19,
+                "size": 2
+              }
+            },
+            {
+              "id": "zwaveAutoOnO1",
+              "type": "number",
+              "label": {
+                "en": "Auto ON O1 with timer",
+                "nl": "Automatisch AAN O1 met timer"
+              },
+              "value": 0,
+              "attr": {
+                "min": 0,
+                "max": 32535
+              },
+              "units": {
+                "en": "(m)s",
+                "nl": "(m)s"
+              },
+              "hint": {
+                "en": "Defines the time after which output 1 is turned on automatically after been turned on. Note: setting this parameter to zero will disable automatically turning on.",
+                "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
+              },
+              "zwave": {
+                "index": 20,
+                "size": 2
+              }
+            },
+            {
+              "id": "zwaveContactTypeO1",
+              "type": "dropdown",
+              "label": {
+                "en": "Contact type O1 - NO/NC",
+                "nl": "Contacttype O1 - NO/NC"
+              },
+              "value": "0",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Normally open (NO)",
+                    "nl": "Normaal open (NO)"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Normally closed (NC)",
+                    "nl": "Normaal gesloten (NC)"
+                  }
+                }
+              ],
+              "hint": {
+                "en": "Defines the type of relay contact type for output 1.",
+                "nl": "Bepaalt het type van relay contact voor output 1."
+              },
+              "zwave": {
+                "index": 23,
+                "size": 1
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Settings",
+            "nl": "Apparaatinstellingen"
+          },
+          "children": [
+            {
+              "id": "zwaveSwitchDetachedModeSW1",
+              "type": "dropdown",
+              "label": {
+                "en": "Detached Mode SW1",
+                "nl": "Losgekoppelde Modus SW1"
+              },
+              "value": "0",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Normal mode",
+                    "nl": "Normale modus"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Detached mode",
+                    "nl": "Losgekoppelde modus"
+                  }
+                }
+              ],
+              "hint": {
+                "en": "In normal mode changes on the inputs will be used to control the output. In detached mode the input will not influence the output.",
+                "nl": "In normale modus worden wijzigingen op de ingangen gebruikt om de uitgangen te bedienen. In losgekoppelde modus beïnvloeden wijzigingen op de ingangen de uitgangen niet."
+              },
+              "zwave": {
+                "index": 7,
+                "size": 1
+              }
+            },
+            {
+              "id": "zwavePowerReportOnChangeO1",
+              "zwave": {
+                "index": 36,
+                "size": 1
+              },
+              "type": "number",
+              "label": {
+                "en": "Power report on change for O1",
+                "nl": "Power report bij wijziging voor O1"
+              },
+              "value": 50,
+              "attr": {
+                "min": 0,
+                "max": 100
+              },
+              "units": {
+                "en": "%",
+                "nl": "%"
+              },
+              "hint": {
+                "en": "Defines the minimum change in consumed power for output 1 that will result in sending new report to Homey.",
+                "nl": "Bepaalt de minimum wijziging in stroomverbruik voor output 1 dat nodig is om een status update naar Homey te versturen."
+              }
+            },
+            {
+              "id": "zwaveMinimalTimePowerReportO1",
+              "zwave": {
+                "index": 39,
+                "size": 1
+              },
+              "type": "number",
+              "label": {
+                "en": "Minimal time between reports for O1",
+                "nl": "Minimale tijd tussen reports voor O1"
+              },
+              "value": 30,
+              "attr": {
+                "min": 10,
+                "max": 120
+              },
+              "units": {
+                "en": "s",
+                "nl": "s"
+              },
+              "hint": {
+                "en": "Defines the minimum time between sending reports to Homey for output 1.",
+                "nl": "Bepaalt de minimum tijd tussen status updates naar Homey voor output 1."
+              }
+            }
+          ]
+        }
+      ],
+      "firmwareUpdates": {
+        "updates": [
+          {
+            "changelog": {
+              "en": "- Corrected Overvoltage threshold to 240+15%V"
+            },
+            "device": {
+              "manufacturerId": 1120,
+              "productTypeId": 2,
+              "productId": 132
+            },
+            "files": [
+              {
+                "name": "US[v14.01].gbl",
+                "integrity": "sha3-512:f90cdd646bbefb73e4ca364f41fab50007d0c35e170bb7ddbf7e76236deee272f64fcf40a786f5b10a69cb14e640be30dff1f4dbf9e4d06ed557a5228383cf3e",
+                "size": 276456,
+                "targetId": 0,
+                "region": "US"
+              },
+              {
+                "name": "EU[v14.01].gbl",
+                "integrity": "sha3-512:bd2657b9532b3af47629c3bfaf2c07bd879c656c913c983a7c132196f56653d7772c03fd295c2ff06c4c74753672b9609e06b7cb32a9a3df765f2b834b20d4db",
+                "size": 276452,
+                "targetId": 0,
+                "region": "EU"
+              },
+              {
+                "name": "ANZ[v14.01].gbl",
+                "integrity": "sha3-512:54cb853bae5982082e785fa2996e244b68c6ad2b65cadfe1054e9c7c99e10d2d896108c0e395f853071ff8ef27d59c9177952244b36c64df8e485e3a9844f1c7",
+                "size": 276456,
+                "targetId": 0,
+                "region": "ANZ"
+              }
+            ],
+            "version": "14.1.0"
+          }
+        ]
+      }
+    },
+    {
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zwave"
+      ],
       "icon": "/drivers/shellywavemcb_zwave/assets/icon.svg",
       "name": {
         "en": "Wave MCB"

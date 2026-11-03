@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- Corrected Overvoltage threshold to 240+15%V"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 2,
+        "productId": 132
+      },
+      "files": [
+        {
+          "name": "US[v14.01].gbl",
+          "integrity": "sha3-512:f90cdd646bbefb73e4ca364f41fab50007d0c35e170bb7ddbf7e76236deee272f64fcf40a786f5b10a69cb14e640be30dff1f4dbf9e4d06ed557a5228383cf3e",
+          "size": 276456,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[v14.01].gbl",
+          "integrity": "sha3-512:bd2657b9532b3af47629c3bfaf2c07bd879c656c913c983a7c132196f56653d7772c03fd295c2ff06c4c74753672b9609e06b7cb32a9a3df765f2b834b20d4db",
+          "size": 276452,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[v14.01].gbl",
+          "integrity": "sha3-512:54cb853bae5982082e785fa2996e244b68c6ad2b65cadfe1054e9c7c99e10d2d896108c0e395f853071ff8ef27d59c9177952244b36c64df8e485e3a9844f1c7",
+          "size": 276456,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "14.1.0"
+    }
+  ]
+}
