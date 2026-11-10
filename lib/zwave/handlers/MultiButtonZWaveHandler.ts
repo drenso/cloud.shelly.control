@@ -8,22 +8,25 @@ export async function configureDevice(device: ShellyZWaveDevice, buttonCount: nu
   const settings: Record<string, string> = {};
 
   try {
-    const switchTypeResponse = await device.getConfigurationBulk(5, 1);
-    const switchDetachedResponses = await device.getConfigurationBulk(7, 2);
+    const switchTypeResponse = await device.getConfigurationBulk(1, buttonCount);
+    const switchDetachedResponses = await device.getConfigurationBulk(7, buttonCount);
 
-    const switchType = switchTypeResponse[0].readUInt8();
-    settings['zwaveSwitchTypeSW1SW2'] = switchType.toFixed();
-    const momentary = switchType === 0;
-
-    let anyButtonDetached = false;
+    let anyButtonReportsButtonPresses = false;
 
     for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-      const buttonDetached = switchDetachedResponses[buttonIndex].readUInt8() === 1;
-      settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = buttonDetached ? '1' : '0';
-      anyButtonDetached ||= buttonDetached;
+      const buttonDetachedMode = switchDetachedResponses[buttonIndex].readUInt8();
+      const switchType = switchTypeResponse[buttonIndex].readUInt8();
+
+      const detached = buttonDetachedMode === 1;
+      const momentary = switchType === 0;
+
+      settings[`zwaveSwitchTypeSW${buttonIndex + 1}`] = switchType.toFixed();
+      settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = buttonDetachedMode.toFixed();
+
+      anyButtonReportsButtonPresses ||= detached && momentary;
     }
 
-    if (anyButtonDetached && momentary) {
+    if (anyButtonReportsButtonPresses) {
       await safeAddCapability(device, 'hidden.button_pressed');
     } else {
       await safeRemoveCapability(device, 'hidden.button_pressed');
@@ -41,15 +44,16 @@ export async function onSettings(
   buttonCount: number,
 ): Promise<string | void> {
   for (const changedKey of changedKeys) {
-    if (changedKey.startsWith('zwaveSwitchDetachedModeSW')) {
-      let anyButtonDetached = false;
+    if (changedKey.startsWith('zwaveSwitchDetachedModeSW') || changedKey.startsWith('zwaveSwitchTypeSW')) {
+      let anyButtonReportsButtonPresses = false;
 
       for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-        const buttonDetached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
-        anyButtonDetached ||= buttonDetached;
+        const detached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
+        const momentary = newSettings[`zwaveSwitchTypeSW${buttonIndex + 1}`] === '0';
+        anyButtonReportsButtonPresses ||= detached && momentary;
       }
 
-      if (anyButtonDetached) {
+      if (anyButtonReportsButtonPresses) {
         await safeAddCapability(device, 'hidden.button_pressed');
       } else {
         await safeRemoveCapability(device, 'hidden.button_pressed');
