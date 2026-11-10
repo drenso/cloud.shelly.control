@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- Fixed Association\n- Fixed Part number\n- Fixed Indicator CC support\n- Fixed short press for Central Scene manager (200ms -> 500ms)\n- Fixed Binary Switch now reports state at boot up\n- Fixed Parameters 1 - 4 to properly handle value 1\n- Added Parameter 117 - Reboot device\n- Added Support for EU LR\n- Changed Association handling into a more modern, safe, implementation\n- Other minor fixes and improvements"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 9,
+        "productId": 130
+      },
+      "files": [
+        {
+          "name": "US[v13.00].gbl",
+          "integrity": "sha3-512:3b31cafd709686b3e97d8396d70b7a320114deab620c67757b3d45c71dbbce9d1ee6007c86300dab0d941adf4b12eb4a618afa54a2ed5a518689622c7316370b",
+          "size": 272500,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[v13.00].gbl",
+          "integrity": "sha3-512:5a27c8aceab1fb5bfe6fb73a1b0307997321eaeca1e57a5b3ffe26003efc8c3349a768ee1e4ca3e7e86ab0e18de769b3f047752d0553dbcfd33160f5e54e37ea",
+          "size": 272500,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[v13.00].gbl",
+          "integrity": "sha3-512:ac9db62c4b7c84df364aeaa3dc807a3e0f361604591ae4eb7bf46cc9c7a12dbc3905e93b7feb285094502ed6b0f64afa0175842008f4b7392b86527aed7dc4c0",
+          "size": 272500,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "13.0.0"
+    }
+  ]
+}
