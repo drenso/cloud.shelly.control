@@ -7,5 +7,6 @@
   "units": { "en": "%" },
   "min": 0,
   "max": 100,
-  "insights": true
+  "insights": true,
+  "icon": "/assets/capabilities/shelly_diffuser_vial_level.svg"
 }

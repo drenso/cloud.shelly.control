@@ -3,5 +3,6 @@
   "title": { "en": "Diffuser vial fragrance" },
   "uiComponent": "sensor",
   "getable": true,
-  "setable": false
+  "setable": false,
+  "icon": "/assets/capabilities/shelly_diffuser_vial_fragrance.svg"
 }

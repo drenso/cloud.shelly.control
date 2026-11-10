@@ -28476,7 +28476,8 @@
       "getable": true,
       "setable": true,
       "uiComponent": "toggle",
-      "uiQuickAction": true
+      "uiQuickAction": true,
+      "icon": "/assets/capabilities/onoff.svg"
     },
     "shelly_diffuser_boost": {
       "type": "boolean",
@@ -28486,7 +28487,8 @@
       "getable": true,
       "setable": true,
       "uiComponent": "button",
-      "uiQuickAction": true
+      "uiQuickAction": true,
+      "icon": "/assets/capabilities/shelly_diffuser_boost.svg"
     },
     "shelly_diffuser_intensity": {
       "type": "number",
@@ -28501,7 +28503,8 @@
       },
       "min": 0,
       "max": 1,
-      "step": 0.01
+      "step": 0.01,
+      "icon": "/assets/capabilities/shelly_diffuser_intensity.svg"
     },
     "shelly_diffuser_vial_expiration": {
       "type": "string",
@@ -28510,7 +28513,8 @@
       },
       "uiComponent": "sensor",
       "getable": true,
-      "setable": false
+      "setable": false,
+      "icon": "/assets/capabilities/shelly_diffuser_vial_expiration.svg"
     },
     "shelly_diffuser_vial_fragrance": {
       "type": "string",
@@ -28519,7 +28523,8 @@
       },
       "uiComponent": "sensor",
       "getable": true,
-      "setable": false
+      "setable": false,
+      "icon": "/assets/capabilities/shelly_diffuser_vial_fragrance.svg"
     },
     "shelly_diffuser_vial_level": {
       "type": "number",
@@ -28534,7 +28539,8 @@
       },
       "min": 0,
       "max": 100,
-      "insights": true
+      "insights": true,
+      "icon": "/assets/capabilities/shelly_diffuser_vial_level.svg"
     },
     "shelly_errors": {
       "title": {

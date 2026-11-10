@@ -7,5 +7,6 @@
   "units": { "en": "%" },
   "min": 0,
   "max": 1,
-  "step": 0.01
+  "step": 0.01,
+  "icon": "/assets/capabilities/shelly_diffuser_intensity.svg"
 }

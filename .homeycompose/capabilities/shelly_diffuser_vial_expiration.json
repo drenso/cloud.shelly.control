@@ -3,5 +3,6 @@
   "title": { "en": "Diffuser vial expiration" },
   "uiComponent": "sensor",
   "getable": true,
-  "setable": false
+  "setable": false,
+  "icon": "/assets/capabilities/shelly_diffuser_vial_expiration.svg"
 }
