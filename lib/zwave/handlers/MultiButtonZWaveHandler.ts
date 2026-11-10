@@ -5,28 +5,34 @@ import { safeAddCapability, safeRemoveCapability } from '../../safeFunctions.js'
 export async function configureDevice(device: ShellyZWaveDevice, buttonCount: number): Promise<void> {
   await ButtonZWaveHandler.configureDevice(device);
 
-  const settings: Record<string, '1' | '0'> = {};
+  const settings: Record<string, string> = {};
 
-  await device
-    .getConfigurationBulk(7, 2)
-    .then(async res => {
-      let anyButtonDetached = false;
+  try {
+    const switchTypeResponse = await device.getConfigurationBulk(5, 1);
+    const switchDetachedResponses = await device.getConfigurationBulk(7, 2);
 
-      for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-        const buttonDetached = res[buttonIndex].readUInt8() === 1;
-        settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = buttonDetached ? '1' : '0';
-        anyButtonDetached ||= buttonDetached;
-      }
+    const switchType = switchTypeResponse[0].readUInt8();
+    settings['zwaveSwitchTypeSW1SW2'] = switchType.toFixed();
+    const momentary = switchType === 0;
 
-      if (anyButtonDetached) {
-        await safeAddCapability(device, 'hidden.button_pressed');
-      } else {
-        await safeRemoveCapability(device, 'hidden.button_pressed');
-      }
+    let anyButtonDetached = false;
 
-      await device.setSettings(settings);
-    })
-    .catch(err => device.error('Error while getting initial setting values:', err));
+    for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
+      const buttonDetached = switchDetachedResponses[buttonIndex].readUInt8() === 1;
+      settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = buttonDetached ? '1' : '0';
+      anyButtonDetached ||= buttonDetached;
+    }
+
+    if (anyButtonDetached && momentary) {
+      await safeAddCapability(device, 'hidden.button_pressed');
+    } else {
+      await safeRemoveCapability(device, 'hidden.button_pressed');
+    }
+
+    await device.setSettings(settings);
+  } catch (err) {
+    device.error('Error while getting initial setting values:', err);
+  }
 }
 
 export async function onSettings(
