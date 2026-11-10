@@ -23,8 +23,8 @@
     }
   ],
   "hint": {
-    "en": "In normal mode changes on the inputs will be used to control the output. In detached mode the input will not influence the output.",
-    "nl": "In normale modus worden wijzigingen op de ingangen gebruikt om de uitgangen te bedienen. In losgekoppelde modus beïnvloeden wijzigingen op de ingangen de uitgangen niet."
+    "en": "In normal mode changes on the inputs will be used to control the output. In detached mode the input will not influence the output. May need a restart to take effect. Button presses are only reported if the switch type is also set to momentary switch",
+    "nl": "In normale modus worden wijzigingen op de ingangen gebruikt om de uitgangen te bedienen. In losgekoppelde modus beïnvloeden wijzigingen op de ingangen de uitgangen niet. Heeft soms een herstart nodig om te werken. Drukken op de knop worden alleen gerapporteerd als het type schakelaar is ingesteld als pulsdrukschakelaar."
   },
   "zwave": {
     "index": 7,
