@@ -15,6 +15,7 @@ export default class ShellyWave1ZWaveDevice extends ShellyZWaveDevice {
     event: SettingsEvent<Record<string, boolean | string | number | undefined | null>>,
   ): Promise<string | void> {
     await SingleButtonZWaveHandler.onSettings(this, event);
+    await super.onSettings(event);
   }
 
   public getButtonEventTypes(): ButtonEventType[] {
