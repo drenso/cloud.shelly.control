@@ -64,8 +64,12 @@ export default abstract class ShellyZWaveDevice extends ZwaveDevice {
     if (this.hasCapability('button.restart')) {
       this.registerCapabilityListener('button.restart', async () => {
         this.log('Trying to restart device');
-        // The device will not respond to this command, so
-        void this.configurationSet({ index: 117, size: 1 }, 1).catch(this.error);
+        // The device will not respond to this command, so ignore the timeout
+        this.configurationSet({ index: 117, size: 1 }, 1).catch((err: { message?: string }) => {
+          if (err.message !== 'timeout') {
+            this.error(err);
+          }
+        });
       });
     }
 
