@@ -72,6 +72,41 @@ type UserOpts<CapabilityValue extends number | boolean | string | null> = {
   multiChannelNodeId?: number;
 };
 
+type NotificationReport = {
+  'V1 Alarm Type': number;
+  'Notification Status': 'Off' | 'No pending notifications' | 'On';
+  'Notification Type':
+    | 'Reserved'
+    | 'Smoke'
+    | 'CO'
+    | 'CO2'
+    | 'Heat'
+    | 'Water'
+    | 'Access Control'
+    | 'Home Security'
+    | 'Power Management'
+    | 'System'
+    | 'Emergency'
+    | 'Clock'
+    | 'Appliance'
+    | 'Home Health'
+    | 'Siren'
+    | 'Water Valve'
+    | 'Weather Alarm'
+    | 'Irrigation'
+    | 'Gas Alarm'
+    | 'First';
+  Event: number;
+  'Event (Parsed)': string;
+  Properties1: {
+    'Event Parameters Length': number;
+    Reserved2: never;
+    Sequence: boolean;
+  };
+  'Event Parameter': unknown;
+  'Sequence Number': number;
+};
+
 declare module 'homey-zwavedriver' {
   import Homey, { type ZwaveNode } from 'homey';
 

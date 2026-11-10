@@ -9,39 +9,41 @@ export default class ShellyWave1PMZWaveDevice extends ShellyZWaveDevice {
     await SingleButtonZWaveHandler.configureDevice(this);
     this.registerCapability('onoff', 'SWITCH_BINARY');
     this.registerCapability('alarm_heat', 'NOTIFICATION');
-    this.registerReportListener('NOTIFICATION', 'NOTIFICATION_REPORT', report => {
-      if (report?.['Notification Type'] === 'Power Management') {
-        let value = null;
-
-        if (report['Event (Parsed)'] === 'Over-current detected') {
-          value = true;
+    this.registerCapability('alarm_shelly_overcurrent', 'NOTIFICATION', {
+      get: 'NOTIFICATION_GET',
+      getParser: () => ({
+        'V1 Alarm Type': 0,
+        'Notification Type': 'Power Management',
+        Event: 6,
+      }),
+      report: 'NOTIFICATION_REPORT',
+      reportParser: (report: NotificationReport) => {
+        if (!report) {
+          return false;
         }
-
-        if (report['Event (Parsed)'] === 'Event inactive') {
-          value = false;
+        if (report['Notification Type'] !== 'Power Management') {
+          return false;
         }
-
-        this.setCapabilityValue('alarm_shelly_overcurrent', value).catch(err =>
-          this.error(`Error while setting alarm_shelly_overcurrent to ${value}:`, err),
-        );
-      }
+        return report['Event (Parsed)'] === 'Over-current detected';
+      },
     });
-    this.registerReportListener('NOTIFICATION', 'NOTIFICATION_REPORT', report => {
-      if (report?.['Notification Type'] === 'Power Management') {
-        let value = null;
-
-        if (report['Event (Parsed)'] === 'Over-voltage detected') {
-          value = true;
+    this.registerCapability('alarm_shelly_overvoltage', 'NOTIFICATION', {
+      get: 'NOTIFICATION_GET',
+      getParser: () => ({
+        'V1 Alarm Type': 0,
+        'Notification Type': 'Power Management',
+        Event: 7,
+      }),
+      report: 'NOTIFICATION_REPORT',
+      reportParser: (report: NotificationReport) => {
+        if (!report) {
+          return false;
         }
-
-        if (report['Event (Parsed)'] === 'Event inactive') {
-          value = false;
+        if (report['Notification Type'] !== 'Power Management') {
+          return false;
         }
-
-        this.setCapabilityValue('alarm_shelly_overvoltage', value).catch(err =>
-          this.error(`Error while setting alarm_shelly_overvoltage to ${value}:`, err),
-        );
-      }
+        return report['Event (Parsed)'] === 'Over-voltage detected';
+      },
     });
   }
 
