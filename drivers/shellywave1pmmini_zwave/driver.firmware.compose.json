@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- SDK with fixed dead node issue\n- Fixed overvoltage threshold\n- Fixed rapid relay switching when parameter 23 is set to 1\n- Fixed Auto ON/OFF parameter timer. Timer resets at command ON/OFF even if the state doesn't change.\n- Fixed detached mode\n- Fixed default values for Par 36 & 39\n- Fixed meter unsolicited reports\n- Fixed binary switch unsolicited reports and Basic set\n- Fixed overcurrent alarm\n- Fixed switch binary report with normally closed\n- Fixed Fix random 0W reports\n- Fixed 60Hz power supply functionality\n- Minor power measurement fix in updating kWh\n- Set correct product part number\n- Added Watt report at boot up\n- Added Precision for Meter CC kWh from 1 decimal to 2\n- Added Parameter 117; Remote Reboot\n- Added kWh precision, 2 decimals\n- Improved Overvoltage alarm\n- Removed Alarm parameters 91, 92, 93, 94 and associated code\n- Removed Outputs blink on successful inclusion/exclusion\n- Removed Multilevel Switch Support\n- Other minor fixes and improvements"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 2,
+        "productId": 143
+      },
+      "files": [
+        {
+          "name": "US[v14.03].gbl",
+          "integrity": "sha3-512:44664346e1919ffa31ab447d4649a8fff46b2778497494f6bebdd49d0dace34145208a4ea691e2faf6015f4f9877c212342d71da6dec7b9e440de00aaa33dd4d",
+          "size": 275464,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[v14.03]gbl",
+          "integrity": "sha3-512:f2f10d2ea0bd8ff2068b4557dbe361ffe7c6f5e78a99c9f3077e11870bccc63cb9c6c89847e6e368404195d6e06eb8151bfb629b7b1166c88916834f66cc10b6",
+          "size": 275464,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[v14.03].gbl",
+          "integrity": "sha3-512:7edf2a12b6b3623a47db9d61cab8ce47ca201c0af076775f0c7d1bcc7c6cdb9357f188f42ae51ed98b670c2a420965cada1fda62457e24de752ed5ca46b7bfd2",
+          "size": 275464,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "14.3.0"
+    }
+  ]
+}
