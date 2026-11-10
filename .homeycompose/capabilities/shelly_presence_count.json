@@ -2,7 +2,7 @@
   "title": {
     "en": "Object count"
   },
-  "icon": "/assets/capabilities/alarm_presence.svg",
+  "icon": "/assets/capabilities/object_count.svg",
   "type": "number",
   "getable": true,
   "setable": false

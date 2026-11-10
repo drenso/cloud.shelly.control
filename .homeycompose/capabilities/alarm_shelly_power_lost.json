@@ -19,5 +19,5 @@
     "en": "Power supply reconnected"
   },
   "uiComponent": "sensor",
-  "icon": "/assets/capabilities/alarm_power.svg"
+  "icon": "/assets/capabilities/powersupply_connected.svg"
 }

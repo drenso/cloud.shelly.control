@@ -11,5 +11,5 @@
   "type": "boolean",
   "getable": true,
   "setable": false,
-  "icon": "/assets/capabilities/alarm_heat.svg"
+  "icon": "/assets/capabilities/heating.svg"
 }

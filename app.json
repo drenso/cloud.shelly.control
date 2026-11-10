@@ -28868,7 +28868,7 @@
         "en": "Power supply reconnected"
       },
       "uiComponent": "sensor",
-      "icon": "/assets/capabilities/alarm_power.svg"
+      "icon": "/assets/capabilities/powersupply_connected.svg"
     },
     "alarm_shelly_tilt": {
       "type": "boolean",
@@ -29102,7 +29102,7 @@
       "type": "boolean",
       "getable": true,
       "setable": false,
-      "icon": "/assets/capabilities/alarm_heat.svg"
+      "icon": "/assets/capabilities/heating.svg"
     },
     "shelly_illumination": {
       "title": {
@@ -29193,7 +29193,7 @@
       "title": {
         "en": "Object count"
       },
-      "icon": "/assets/capabilities/alarm_presence.svg",
+      "icon": "/assets/capabilities/object_count.svg",
       "type": "number",
       "getable": true,
       "setable": false
