@@ -43,7 +43,7 @@ export default class ShellyEMGen4LocalDriver extends ShellyLocalDriver {
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
           },
           settings: {
-            energy_cumulative_include: false,
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
           },
           capabilities: ['button.restart'],
         });

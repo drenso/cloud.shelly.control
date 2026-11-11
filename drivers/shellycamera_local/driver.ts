@@ -25,6 +25,9 @@ export default class ShellyCameraLocalDriver extends ShellyLocalDriver {
             .map(component => component.key),
         },
         capabilities: [],
+        settings: {
+          energy_cumulative_include: this.cumulativeEnergyByDefault,
+        },
       },
     ];
 
@@ -52,6 +55,9 @@ export default class ShellyCameraLocalDriver extends ShellyLocalDriver {
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
           },
           capabilities: [],
+          settings: {
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
+          },
         });
       }
     }
