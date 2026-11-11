@@ -1,12 +1,17 @@
 import ShellyZWaveDevice from '../../lib/zwave/ZWaveDevice.js';
 import { safeAddCapability, safeRemoveCapability } from '../../lib/safeFunctions.js';
-import type { ButtonIndicesDeviceInterface, ButtonEventTypesDeviceInterface } from '../../lib/capabilityInterfaces.js';
+import type {
+  ButtonIndicesDeviceInterface,
+  ButtonEventTypesDeviceInterface,
+  SwitchIndicesDeviceInterface,
+} from '../../lib/capabilityInterfaces.js';
 import type { ButtonEventType } from '../../lib/flow/buttonFlows.js';
 import * as ButtonZWaveHandler from '../../lib/zwave/handlers/ButtonZWaveHandler.js';
+import * as SwitchZWaveHandler from '../../lib/zwave/handlers/SwitchZWaveHandler.js';
 
 export default class ShellyWaveShutterZWaveDevice
   extends ShellyZWaveDevice
-  implements ButtonIndicesDeviceInterface, ButtonEventTypesDeviceInterface
+  implements ButtonIndicesDeviceInterface, ButtonEventTypesDeviceInterface, SwitchIndicesDeviceInterface
 {
   public readonly minimumFirmwareVersion = [14, 2] as const;
 
@@ -14,6 +19,7 @@ export default class ShellyWaveShutterZWaveDevice
     const buttonCount = 2;
 
     await ButtonZWaveHandler.configureDevice(this);
+    await SwitchZWaveHandler.configureDevice(this, buttonCount);
 
     const settings: Record<string, string> = {};
 
@@ -107,15 +113,23 @@ export default class ShellyWaveShutterZWaveDevice
     return ['single_press', 'long_press', 'hold'];
   }
 
-  public getButtonIndices(): number[] {
-    const buttons = [];
+  private getDetachedInputIndices(): number[] {
+    const detachedInputs = [];
     const settings = this.getSettings();
     if (settings['zwaveSwitchDetachedModeSW1'] === '1') {
-      buttons.push(0);
+      detachedInputs.push(0);
     }
     if (settings['zwaveSwitchDetachedModeSW2'] === '1') {
-      buttons.push(1);
+      detachedInputs.push(1);
     }
-    return buttons;
+    return detachedInputs;
+  }
+
+  public getButtonIndices(): number[] {
+    return this.getDetachedInputIndices();
+  }
+
+  public getSwitchIndices(): number[] {
+    return this.getDetachedInputIndices();
   }
 }

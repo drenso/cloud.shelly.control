@@ -1,4 +1,4 @@
-import * as SingleButtonZWaveHandler from '../../lib/zwave/handlers/SingleButtonZWaveHandler.js';
+import * as InputZWaveHandler from '../../lib/zwave/handlers/InputZWaveHandler.js';
 import type { ButtonEventType } from '../../lib/flow/buttonFlows.js';
 import ShellyZWaveDevice from '../../lib/zwave/ZWaveDevice.js';
 
@@ -6,7 +6,7 @@ export default class ShellyWave1MiniZWaveDevice extends ShellyZWaveDevice {
   public readonly minimumFirmwareVersion = [14, 0] as const;
 
   protected async configureDevice(): Promise<void> {
-    await SingleButtonZWaveHandler.configureDevice(this);
+    await InputZWaveHandler.configureDevice(this, 1);
     this.registerCapability('onoff', 'SWITCH_BINARY');
     this.registerCapability('alarm_heat', 'NOTIFICATION');
   }
@@ -14,7 +14,7 @@ export default class ShellyWave1MiniZWaveDevice extends ShellyZWaveDevice {
   public async onSettings(
     event: SettingsEvent<Record<string, boolean | string | number | undefined | null>>,
   ): Promise<string | void> {
-    await SingleButtonZWaveHandler.onSettings(this, event);
+    await InputZWaveHandler.onSettings(this, event, 1);
     await super.onSettings(event);
   }
 
