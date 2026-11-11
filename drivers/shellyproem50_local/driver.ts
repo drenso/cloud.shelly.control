@@ -43,6 +43,9 @@ export default class ShellyProEM4LocalDriver extends ShellyLocalDriver {
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: true,
+          },
         });
       } else if (componentType === 'switch') {
         const switchId = parseInt(componentId!, 10);
@@ -64,6 +67,9 @@ export default class ShellyProEM4LocalDriver extends ShellyLocalDriver {
             components: [`switch:${componentId}`],
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: false,
+          },
         });
       }
     }

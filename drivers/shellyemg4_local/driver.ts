@@ -42,6 +42,9 @@ export default class ShellyEMGen4LocalDriver extends ShellyLocalDriver {
             ...selectedDevice.store,
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
           },
+          settings: {
+            energy_cumulative_include: false,
+          },
           capabilities: ['button.restart'],
         });
       } else if (componentType === 'switch') {
