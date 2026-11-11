@@ -27,9 +27,9 @@ export async function configureDevice(device: ShellyZWaveDevice, buttonCount: nu
     }
 
     if (anyButtonReportsButtonPresses) {
-      await safeAddCapability(device, 'hidden.button_pressed');
+      await safeAddCapability(device, buttonCount === 1 ? 'hidden.single_button_pressed' : 'hidden.button_pressed');
     } else {
-      await safeRemoveCapability(device, 'hidden.button_pressed');
+      await safeRemoveCapability(device, buttonCount === 1 ? 'hidden.single_button_pressed' : 'hidden.button_pressed');
     }
 
     await device.setSettings(settings);
@@ -44,22 +44,24 @@ export async function onSettings(
   buttonCount: number,
 ): Promise<string | void> {
   for (const changedKey of changedKeys) {
-    if (changedKey.startsWith('zwaveSwitchDetachedModeSW') || changedKey.startsWith('zwaveSwitchTypeSW')) {
-      let anyButtonReportsButtonPresses = false;
-
-      for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-        const detached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
-        const momentary = newSettings[`zwaveSwitchTypeSW${buttonIndex + 1}`] === '0';
-        anyButtonReportsButtonPresses ||= detached && momentary;
-      }
-
-      if (anyButtonReportsButtonPresses) {
-        await safeAddCapability(device, 'hidden.button_pressed');
-      } else {
-        await safeRemoveCapability(device, 'hidden.button_pressed');
-      }
-
-      break;
+    if (!changedKey.startsWith('zwaveSwitchDetachedModeSW') && !changedKey.startsWith('zwaveSwitchTypeSW')) {
+      continue;
     }
+
+    let anyButtonReportsButtonPresses = false;
+
+    for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
+      const detached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
+      const momentary = newSettings[`zwaveSwitchTypeSW${buttonIndex + 1}`] === '0';
+      anyButtonReportsButtonPresses ||= detached && momentary;
+    }
+
+    if (anyButtonReportsButtonPresses) {
+      await safeAddCapability(device, buttonCount === 1 ? 'hidden.single_button_pressed' : 'hidden.button_pressed');
+    } else {
+      await safeRemoveCapability(device, buttonCount === 1 ? 'hidden.single_button_pressed' : 'hidden.button_pressed');
+    }
+
+    break;
   }
 }
