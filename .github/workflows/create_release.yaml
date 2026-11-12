@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create release
-        uses: softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@v3.0.4
         with:
           tag_name: ${{ github.ref_name }}
           draft: true
@@ -68,7 +68,7 @@ jobs:
           mv tools/interview-sea/interview-shelly-control tools/interview-sea/interview-shelly-control-${{ github.ref_name }}-${{ runner.os }}-${{ runner.arch}}${{ (matrix.os == 'windows-latest' || matrix.os == 'windows-11-arm') && '.exe' || '' }}
 
       - name: Upload executable
-        uses: softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@v3.0.4
         with:
           tag_name: ${{ github.ref_name }}
           draft: true
@@ -82,7 +82,7 @@ jobs:
     needs: build_executable
     steps:
       - name: Publish release
-        uses: softprops/action-gh-release@v3.0.3
+        uses: softprops/action-gh-release@v3.0.4
         with:
           tag_name: ${{ github.ref_name }}
           draft: false
