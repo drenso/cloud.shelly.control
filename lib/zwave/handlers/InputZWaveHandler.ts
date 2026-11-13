@@ -3,6 +3,15 @@ import * as ButtonZWaveHandler from './ButtonZWaveHandler.js';
 import * as SwitchZWaveHandler from './SwitchZWaveHandler.js';
 import { safeAddCapability, safeRemoveCapability } from '../../safeFunctions.js';
 
+/*
+  The Wave devices only report input changes if the input is in detached mode.
+  If a momentary switch is attached to the input the changes will be reported as button presses, otherwise as switch events.
+ */
+
+/**
+ * @param config
+ * @param {boolean} [config.noDetachedSetting=false] Skip checks for detached mode if the device does not have an attached mode, such as the i4
+ */
 export async function configureDevice(
   device: ShellyZWaveDevice,
   buttonCount: number,
@@ -54,12 +63,18 @@ export async function configureDevice(
   }
 }
 
+/**
+ * @param config
+ * @param {boolean} [config.noDetachedSetting=false] Skip checks for detached mode if the device does not have an attached mode, such as the i4
+ */
 export async function onSettings(
   device: ShellyZWaveDevice,
-  { changedKeys, newSettings }: SettingsEvent<Record<string, boolean | string | number | undefined | null>>,
+  event: SettingsEvent<Record<string, boolean | string | number | undefined | null>>,
   buttonCount: number,
   { noDetachedSetting = false } = {},
 ): Promise<string | void> {
+  const { changedKeys, newSettings } = event;
+
   for (const changedKey of changedKeys) {
     if (!changedKey.startsWith('zwaveSwitchDetachedModeSW') && !changedKey.startsWith('zwaveSwitchTypeSW')) {
       continue;
@@ -94,6 +109,10 @@ export async function onSettings(
   }
 }
 
+/**
+ * @param config
+ * @param {boolean} [config.noDetachedSetting=false] Skip checks for detached mode if the device does not have an attached mode, such as the i4
+ */
 export function getButtonIndices(
   device: ShellyZWaveDevice,
   buttonCount: number,
@@ -113,6 +132,10 @@ export function getButtonIndices(
   return buttons;
 }
 
+/**
+ * @param config
+ * @param {boolean} [config.noDetachedSetting=false] Skip checks for detached mode if the device does not have an attached mode, such as the i4
+ */
 export function getSwitchIndices(
   device: ShellyZWaveDevice,
   buttonCount: number,
