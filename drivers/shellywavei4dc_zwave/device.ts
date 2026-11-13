@@ -1,5 +1,5 @@
 import * as InputZWaveHandler from '../../lib/zwave/handlers/InputZWaveHandler.js';
-import ShellyZWaveDevice from '../../lib/zwave/ZWaveDevice.js';
+import ShellyZWaveDevice, { type FirmwareVersion } from '../../lib/zwave/ZWaveDevice.js';
 import type { ButtonEventType } from '../../lib/flow/buttonFlows.js';
 import type {
   ButtonEventTypesDeviceInterface,
@@ -11,7 +11,7 @@ export default class ShellyWaveI4DCZWaveDevice
   extends ShellyZWaveDevice
   implements ButtonIndicesDeviceInterface, ButtonEventTypesDeviceInterface, SwitchIndicesDeviceInterface
 {
-  public readonly minimumFirmwareVersion = [13, 0] as const;
+  public readonly minimumFirmwareVersion: FirmwareVersion = [13, 0];
 
   protected async configureDevice(): Promise<void> {
     await InputZWaveHandler.configureDevice(this, 4, { noDetachedSetting: true });

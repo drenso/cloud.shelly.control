@@ -5,11 +5,13 @@ import Logger from '../log/Logger.js';
 import { safeSetCapabilityValue } from '../safeFunctions.js';
 import type { ButtonEventType } from '../flow/buttonFlows.js';
 
+export type FirmwareVersion = [number, number];
+
 export default abstract class ShellyZWaveDevice extends ZwaveDevice {
   protected logger?: Logger = undefined;
   private queuedWorker?: QueuedWorker;
 
-  public readonly minimumFirmwareVersion: readonly [number, number] = [0, 0];
+  public readonly minimumFirmwareVersion: FirmwareVersion = [0, 0];
   protected readonly calibrationStartConfigurationIndex = 78;
 
   public getButtonEventTypes?(): ButtonEventType[];

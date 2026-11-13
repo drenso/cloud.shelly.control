@@ -1,4 +1,4 @@
-import ShellyZWaveDevice from '../../lib/zwave/ZWaveDevice.js';
+import ShellyZWaveDevice, { type FirmwareVersion } from '../../lib/zwave/ZWaveDevice.js';
 import { safeAddCapability, safeRemoveCapability } from '../../lib/safeFunctions.js';
 import type {
   ButtonIndicesDeviceInterface,
@@ -13,7 +13,7 @@ export default class ShellyWaveShutterZWaveDevice
   extends ShellyZWaveDevice
   implements ButtonIndicesDeviceInterface, ButtonEventTypesDeviceInterface, SwitchIndicesDeviceInterface
 {
-  public readonly minimumFirmwareVersion = [14, 2] as const;
+  public readonly minimumFirmwareVersion: FirmwareVersion = [14, 2];
 
   protected async configureDevice(): Promise<void> {
     const buttonCount = 2;
