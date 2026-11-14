@@ -9849,6 +9849,9 @@
           "units": "V"
         },
         {
+          "value": 10,
+          "min": 1,
+          "max": 10,
           "id": "Cover:current_limit",
           "type": "number",
           "label": {
@@ -9857,8 +9860,6 @@
           "hint": {
             "en": "The maximum value is the max-rated output current."
           },
-          "value": 12,
-          "min": 0,
           "units": "A"
         },
         {
@@ -10500,6 +10501,9 @@
           "units": "V"
         },
         {
+          "value": 10,
+          "min": 1,
+          "max": 10,
           "id": "Switch:current_limit",
           "type": "number",
           "label": {
@@ -10508,8 +10512,6 @@
           "hint": {
             "en": "The maximum value is the max-rated output current."
           },
-          "value": 12,
-          "min": 0,
           "units": "A"
         },
         {

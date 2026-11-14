@@ -24,7 +24,10 @@
     "$extends": "Cover.undervoltage_limit"
   },
   {
-    "$extends": "Cover.current_limit"
+    "$extends": "Cover.current_limit",
+    "value": 10,
+    "min": 1,
+    "max": 10
   },
   {
     "$extends": "Cover.motor.idle_power_thr"
