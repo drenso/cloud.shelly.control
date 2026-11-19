@@ -24,5 +24,15 @@
     "title": {
       "en": "Button input __name__"
     }
+  },
+  "alarm_motion": {
+    "title": {
+      "en": "Motion __name__"
+    }
+  },
+  "alarm_contact": {
+    "title": {
+      "en": "Contact __name__"
+    }
   }
 }

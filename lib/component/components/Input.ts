@@ -278,7 +278,12 @@ export type InputStatus = {
   errors?: ('out_of_range' | 'read')[];
 };
 
+type AddonInputSensorType = 'generic' | 'motion' | 'contact';
+
+const ADDON_SENSOR_CAPABILITIES = { motion: 'alarm_motion', contact: 'alarm_contact' } as const;
+
 export type InputHomeySettings = {
+  addonInputSensorType: AddonInputSensorType;
   'Input:type': 'switch' | 'button' | 'analog' | 'count';
   'Input:enable': boolean;
   'Input:invert': boolean;
@@ -340,6 +345,7 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
   public readonly CheckExpression = CheckExpression;
 
   private homeyDevices = new Set<ShellyLocalDevice>();
+  private readonly sensorTypes = new WeakMap<ShellyLocalDevice, AddonInputSensorType>();
 
   private readonly buttonMitt = createMitt<ButtonMittEvents>();
 
@@ -396,6 +402,14 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
       }
     }
 
+    this.sensorTypes.set(homeyDevice, this.parseSensorType(homeyDevice.getSetting('addonInputSensorType')));
+    const sensorCapability = this.getSensorCapability(homeyDevice);
+    if (sensorCapability !== undefined) {
+      componentCapabilities.push(
+        await this.registerInputCapability(homeyDevice, sensorCapability, capabilitiesOptions[sensorCapability]),
+      );
+    }
+
     this.homeyDevices.add(homeyDevice);
 
     return componentCapabilities;
@@ -403,9 +417,15 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
 
   public async unregisterHomeyDevice(homeyDevice: ShellyLocalDevice): Promise<void> {
     this.homeyDevices.delete(homeyDevice);
+    this.sensorTypes.delete(homeyDevice);
   }
 
   public async onStatusUpdate(homeyDevice: ShellyLocalDevice, status: Partial<InputStatus>): Promise<void> {
+    const sensorCapability = this.getSensorCapability(homeyDevice);
+    if (sensorCapability !== undefined && status.state !== undefined) {
+      await this.setInputCapability(homeyDevice, sensorCapability, status.state);
+    }
+
     if (status.state !== undefined && status.state !== null) {
       await this.setInputCapability(homeyDevice, 'shelly_input_switch', status.state);
       const switchUpdate = { value: status.state, input: this.id };
@@ -453,12 +473,18 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
     }
 
     await homeyDevice.setComponentSettings(this.namespace, this.id, newSettings);
+    await this.syncSensorCapability(homeyDevice);
   }
 
   public async handleSettings(
     homeyDevice: ShellyLocalDevice,
     { changedKeys, newSettings }: SettingsEvent<InputHomeySettings>,
   ): Promise<boolean> {
+    if (changedKeys.includes('addonInputSensorType')) {
+      this.sensorTypes.set(homeyDevice, this.parseSensorType(newSettings.addonInputSensorType));
+      await this.syncSensorCapability(homeyDevice);
+    }
+
     const changedConfig: RecursivePartial<InputConfig, AllowedPrimitives> = {};
 
     for (const settingKey of settingKeys) {
@@ -477,6 +503,7 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
     }
 
     const result = await this.SetConfig(this.device.getChannel(), { config: changedConfig });
+    await this.syncSensorCapability(homeyDevice);
     return result.result.restart_required;
   }
 
@@ -498,6 +525,32 @@ export default class Input extends ComponentWithId<'Input', InputStatus, InputCo
       );
     } else {
       await super.handleEvent(event);
+    }
+  }
+
+  private parseSensorType(value: unknown): AddonInputSensorType {
+    return value === 'motion' || value === 'contact' ? value : 'generic';
+  }
+
+  private getSensorCapability(homeyDevice: ShellyLocalDevice): 'alarm_motion' | 'alarm_contact' | undefined {
+    // Only external switch inputs represent a persistent binary sensor state.
+    if (this.id < 100 || this.id > 199 || this.config.type !== 'switch') return undefined;
+    const sensorType = this.sensorTypes.get(homeyDevice) ?? 'generic';
+    return sensorType === 'generic' ? undefined : ADDON_SENSOR_CAPABILITIES[sensorType];
+  }
+
+  private async syncSensorCapability(homeyDevice: ShellyLocalDevice): Promise<void> {
+    if (this.id < 100 || this.id > 199) return;
+    const selectedCapability = this.getSensorCapability(homeyDevice);
+    for (const capability of Object.values(ADDON_SENSOR_CAPABILITIES)) {
+      const capabilityId = `${capability}.${this.id}`;
+      if (capability !== selectedCapability) {
+        if (homeyDevice.hasCapability(capabilityId)) await homeyDevice.removeCapability(capabilityId);
+        continue;
+      }
+      if (!homeyDevice.hasCapability(capabilityId)) await homeyDevice.addCapability(capabilityId);
+      await this.registerInputCapability(homeyDevice, capability, capabilitiesOptions[capability]);
+      await this.setInputCapability(homeyDevice, capability, this.status.state ?? null);
     }
   }
 
