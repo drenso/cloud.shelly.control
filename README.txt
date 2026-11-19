@@ -3,3 +3,5 @@ Meet the smarter, easier way to control your home. Shelly puts every switch, sen
 Whether you’re dimming the lights for movie night, warming up the house before you get home, or checking if you left the coffee machine on, Shelly gives you effortless control with a clean, intuitive design that feels just right.
 
 Simple. Comfortable. Smart. With Shelly your home finally listens.
+
+Note that Gen1 device are not supported with this app, but they are supported with the legacy app!
