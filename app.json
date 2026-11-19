@@ -6160,6 +6160,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -6400,6 +6431,37 @@
             "en": "If enabled, a script will be started on this device to forward BLE messages from other Shelly devices. This ensures that messages from the other BLE devices can be handled even if they are out of range of your Homey device."
           },
           "value": false
+        },
+        {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
         },
         {
           "id": "_shelly_device_info",
@@ -7884,6 +7946,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -8170,6 +8263,37 @@
             "en": "If enabled, a script will be started on this device to forward BLE messages from other Shelly devices. This ensures that messages from the other BLE devices can be handled even if they are out of range of your Homey device."
           },
           "value": false
+        },
+        {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
         },
         {
           "id": "_shelly_device_info",
@@ -10230,6 +10354,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -10644,6 +10799,37 @@
             "en": "If enabled, a script will be started on this device to forward BLE messages from other Shelly devices. This ensures that messages from the other BLE devices can be handled even if they are out of range of your Homey device."
           },
           "value": false
+        },
+        {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
         },
         {
           "id": "_shelly_device_info",
@@ -16991,6 +17177,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -19861,6 +20078,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -20068,6 +20316,37 @@
             "en": "If enabled, a script will be started on this device to forward BLE messages from other Shelly devices. This ensures that messages from the other BLE devices can be handled even if they are out of range of your Homey device."
           },
           "value": false
+        },
+        {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
         },
         {
           "id": "_shelly_device_info",
@@ -20713,6 +20992,37 @@
           "value": false
         },
         {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
+        },
+        {
           "id": "_shelly_device_info",
           "type": "group",
           "label": {
@@ -21016,6 +21326,37 @@
             "en": "If enabled, a script will be started on this device to forward BLE messages from other Shelly devices. This ensures that messages from the other BLE devices can be handled even if they are out of range of your Homey device."
           },
           "value": false
+        },
+        {
+          "id": "addonInputSensorType",
+          "type": "dropdown",
+          "label": {
+            "en": "Add-on digital inputs - Report as"
+          },
+          "hint": {
+            "en": "Adds a motion or contact alarm to external switch inputs (100–199), allowing them to contribute to Homey Zone Activity. The existing switch input and Flows remain available. Applies to all digital switch inputs on this add-on. Uses the Shelly input state and inversion; true means motion detected or contact open. Does not change the Shelly configuration."
+          },
+          "value": "generic",
+          "values": [
+            {
+              "id": "generic",
+              "label": {
+                "en": "Generic input (default)"
+              }
+            },
+            {
+              "id": "motion",
+              "label": {
+                "en": "Motion sensor"
+              }
+            },
+            {
+              "id": "contact",
+              "label": {
+                "en": "Contact sensor"
+              }
+            }
+          ]
         },
         {
           "id": "_shelly_device_info",

@@ -21,6 +21,9 @@
     "$extends": "installBleForwardingScript"
   },
   {
+    "$extends": "addonInputSensorType"
+  },
+  {
     "$extends": "_shelly_device_info"
   }
 ]
