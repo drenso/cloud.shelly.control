@@ -1,0 +1,21 @@
+[
+  {
+    "$extends": "zwaveSwitchTypeSW1",
+    "value": "0"
+  },
+  {
+    "$extends": "zwaveSwitchTypeSW2",
+    "value": "0"
+  },
+  {
+    "$extends": "zwaveSwitchTypeSW3",
+    "value": "0"
+  },
+  {
+    "$extends": "zwaveSwitchTypeSW4",
+    "value": "0"
+  },
+  {
+    "$extends": "zwaveIndicatorLedIntensity"
+  }
+]

@@ -25794,6 +25794,277 @@
       "connectivity": [
         "zwave"
       ],
+      "icon": "/drivers/shellywavei4_zwave/assets/icon.svg",
+      "name": {
+        "en": "Wave i4"
+      },
+      "class": "button",
+      "capabilities": [
+        "alarm_heat",
+        "hidden.button_pressed"
+      ],
+      "zwave": {
+        "manufacturerId": 1120,
+        "productTypeId": [
+          9
+        ],
+        "productId": [
+          129
+        ],
+        "associationGroups": [
+          1
+        ],
+        "learnmode": {
+          "image": "./assets/zwave-learnmode.svg",
+          "instruction": {
+            "en": "Press and hold the S button on the device until the LED turns solid blue. Release the button and press and hold it again (> 2s) until the blue LED starts blinking. Repeat this for step 2 in the pairing process and enter the device key (pincode).",
+            "nl": "Houd de S-knop op het apparaat ingedrukt totdat de LED continu blauw wordt. Laat de knop los en druk er opnieuw op en houd deze ingedrukt (> 2s) totdat de blauwe LED begint te knipperen. Herhaal dit voor stap 2 in het koppelingsproces en voer de apparaatsleutel (pincode) in."
+          }
+        },
+        "unlearnmode": {
+          "image": "./assets/zwave-learnmode.svg",
+          "instruction": {
+            "en": "Press and hold the S button on the device until the LED turns solid blue. Release the button and press and hold it again (> 2s) until the blue LED starts blinking.",
+            "nl": "Houd de S-knop op het apparaat ingedrukt totdat de LED continu blauw wordt. Laat de knop los en druk er opnieuw op en houd deze ingedrukt (> 2s) totdat de blauwe LED begint te knipperen."
+          }
+        }
+      },
+      "images": {
+        "small": "/assets/drivers/shellywavei4/images/small.png",
+        "large": "/assets/drivers/shellywavei4/images/large.png",
+        "xlarge": "/assets/drivers/shellywavei4/images/xlarge.png"
+      },
+      "id": "shellywavei4_zwave",
+      "settings": [
+        {
+          "value": "0",
+          "id": "zwaveSwitchTypeSW1",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type SW1",
+            "nl": "Schakelaar type SW1"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch (push button)",
+                "nl": "Pulsdrukschakelaar (push button)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch (contact closed - ON / contact opened - OFF)",
+                "nl": "Tuimelschakelaar (contact closed - ON / contact opened - OFF)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Toggle switch (device changes status when switch changes status)",
+                "nl": "Tuimelschakelaar (apparaat wijzigt status wanneer schakelaar status wijzigt)"
+              }
+            }
+          ],
+          "hint": {
+            "en": "Determines the type of switch connected to input 1.",
+            "nl": "Specificeert het type schakelaar dat is aangesloten op input 1."
+          },
+          "zwave": {
+            "index": 1,
+            "size": 1
+          }
+        },
+        {
+          "value": "0",
+          "id": "zwaveSwitchTypeSW2",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type SW2",
+            "nl": "Schakelaar type SW2"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch (push button)",
+                "nl": "Pulsdrukschakelaar (push button)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch (contact closed - ON / contact opened - OFF)",
+                "nl": "Tuimelschakelaar (contact closed - ON / contact opened - OFF)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Toggle switch (device changes status when switch changes status)",
+                "nl": "Tuimelschakelaar (apparaat wijzigt status wanneer schakelaar status wijzigt)"
+              }
+            }
+          ],
+          "hint": {
+            "en": "Determines the type of switch connected to input 2.",
+            "nl": "Specificeert het type schakelaar dat is aangesloten op input 2."
+          },
+          "zwave": {
+            "index": 2,
+            "size": 1
+          }
+        },
+        {
+          "value": "0",
+          "id": "zwaveSwitchTypeSW3",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type SW3",
+            "nl": "Schakelaar type SW3"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch (push button)",
+                "nl": "Pulsdrukschakelaar (push button)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch (contact closed - ON / contact opened - OFF)",
+                "nl": "Tuimelschakelaar (contact closed - ON / contact opened - OFF)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Toggle switch (device changes status when switch changes status)",
+                "nl": "Tuimelschakelaar (apparaat wijzigt status wanneer schakelaar status wijzigt)"
+              }
+            }
+          ],
+          "hint": {
+            "en": "Determines the type of switch connected to input 3.",
+            "nl": "Specificeert het type schakelaar dat is aangesloten op input 3."
+          },
+          "zwave": {
+            "index": 3,
+            "size": 1
+          }
+        },
+        {
+          "value": "0",
+          "id": "zwaveSwitchTypeSW4",
+          "type": "dropdown",
+          "label": {
+            "en": "Switch type SW4",
+            "nl": "Schakelaar type SW4"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Momentary switch (push button)",
+                "nl": "Pulsdrukschakelaar (push button)"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Toggle switch (contact closed - ON / contact opened - OFF)",
+                "nl": "Tuimelschakelaar (contact closed - ON / contact opened - OFF)"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Toggle switch (device changes status when switch changes status)",
+                "nl": "Tuimelschakelaar (apparaat wijzigt status wanneer schakelaar status wijzigt)"
+              }
+            }
+          ],
+          "hint": {
+            "en": "Determines the type of switch connected to input 4.",
+            "nl": "Specificeert het type schakelaar dat is aangesloten op input 4."
+          },
+          "zwave": {
+            "index": 4,
+            "size": 1
+          }
+        },
+        {
+          "id": "zwaveIndicatorLedIntensity",
+          "type": "number",
+          "label": {
+            "en": "Indicator LED intensity",
+            "nl": "Indicatie LED intensiteit"
+          },
+          "value": 100,
+          "attr": {
+            "min": 0,
+            "max": 100
+          },
+          "units": {
+            "en": "%",
+            "nl": "%"
+          },
+          "zwave": {
+            "index": 105,
+            "size": 1
+          }
+        }
+      ],
+      "firmwareUpdates": {
+        "updates": [
+          {
+            "changelog": {
+              "en": "- SDK with fixed dead node issue\n- Fixed Association\n- Fixed Part number\n- Fixed Indicator CC support\n- Fixed short press for Central Scene manager (200ms -> 500ms)\n- Fixed Binary Switch now reports state at boot up\n- Fixed Parameters 1 - 4 to properly handle value 1\n- Added Parameter 118 (switch exclusion enable/disable)\n- Added Parameter 117 - Reboot device\n- Added Support for EU LR\n- Changed Association handling into a more modern, safe, implementation\n- Other minor fixes and improvements"
+            },
+            "device": {
+              "manufacturerId": 1120,
+              "productTypeId": 9,
+              "productId": 129
+            },
+            "files": [
+              {
+                "name": "US[v13.01].gbl",
+                "integrity": "sha3-512:2eea1f7280d56a05cbfe7ed933ca69dfe631a71261af12b16cd67c3e2d1513f4be467aaeb9cd0a18121eca349b7f142629a1702ec6fada91b53b640633b8ea1b",
+                "size": 272492,
+                "targetId": 0,
+                "region": "US"
+              },
+              {
+                "name": "EU[v13.01].gbl",
+                "integrity": "sha3-512:2a5be45af7f6fc8e20377d9e836ec4d353272465d7bb30f53fef60ff631b8e10601afac38fa53844560d901b7a311594111bf4e1de0808a0feedb7de50272cce",
+                "size": 272492,
+                "targetId": 0,
+                "region": "EU"
+              },
+              {
+                "name": "ANZ[v13.01].gbl",
+                "integrity": "sha3-512:d875c0745f8a729446efffa95c887ae639d1f240dc1951d012fa2141fe4b2c9134c72923a99f388c003da6059a3131e7599294ad2f22b815c62c07d669aa4a91",
+                "size": 272492,
+                "targetId": 0,
+                "region": "ANZ"
+              }
+            ],
+            "version": "13.1.0"
+          }
+        ]
+      }
+    },
+    {
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "zwave"
+      ],
       "icon": "/drivers/shellywavei4dc_zwave/assets/icon.svg",
       "name": {
         "en": "Wave i4 DC"
