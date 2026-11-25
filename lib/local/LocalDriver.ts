@@ -17,6 +17,7 @@ import { LocalRePairingHandler } from './LocalRePairingHandler.js';
 export default abstract class ShellyLocalDriver extends Homey.Driver {
   public readonly batteryDevice: boolean = false;
   public readonly requiresPlaintextPassword: boolean = false;
+  public readonly cumulativeEnergyAvailable: boolean = false;
   public readonly cumulativeEnergyByDefault: boolean = false;
 
   public async onInit(): Promise<void> {
@@ -179,6 +180,9 @@ export default abstract class ShellyLocalDriver extends Homey.Driver {
       capabilities: selectedDevice.data.battery_device ? [] : ['button.restart'],
       settings: {
         energy_cumulative_include: this.cumulativeEnergyByDefault,
+      },
+      energy: {
+        cumulative: this.cumulativeEnergyAvailable,
       },
     };
 

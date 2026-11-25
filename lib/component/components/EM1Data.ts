@@ -83,10 +83,10 @@ export default class EM1Data extends ComponentWithId<'EM1Data', EM1DataStatus, E
     componentCapabilities.push('alarm_generic', 'shelly_errors');
 
     if (this.status['total_act_energy'] !== undefined || this.status['total_act_ret_energy'] !== undefined) {
+      // TODO add cumulative energy setting once it can default to false
       let energy = homeyDevice.getEnergy();
       energy = {
         ...energy,
-        cumulative: true,
         meterPowerImportedCapability: 'meter_power.imported',
         meterPowerExportedCapability: 'meter_power.exported',
       };
