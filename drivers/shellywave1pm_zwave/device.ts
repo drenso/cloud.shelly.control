@@ -8,6 +8,8 @@ export default class ShellyWave1PMZWaveDevice extends ShellyZWaveDevice {
   protected async configureDevice(): Promise<void> {
     await InputZWaveHandler.configureDevice(this, 1);
     this.registerCapability('onoff', 'SWITCH_BINARY');
+    this.registerCapability('measure_power', 'METER');
+    this.registerCapability('meter_power', 'METER');
     this.registerCapability('alarm_heat', 'NOTIFICATION');
     this.registerCapability('alarm_shelly_overcurrent', 'NOTIFICATION', {
       get: 'NOTIFICATION_GET',
