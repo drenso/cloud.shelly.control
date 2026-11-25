@@ -4,7 +4,7 @@
     "en": "Wave i4 DC"
   },
   "class": "button",
-  "capabilities": ["alarm_heat", "hidden.button_pressed"],
+  "capabilities": ["alarm_heat", "hidden.button_pressed", "hidden.input_switch_changed"],
   "zwave": {
     "manufacturerId": 1120,
     "productTypeId": [9],

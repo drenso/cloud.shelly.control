@@ -24334,7 +24334,8 @@
         "button.restart",
         "button.reset_meter",
         "alarm_heat",
-        "hidden.single_button_pressed"
+        "hidden.single_button_pressed",
+        "hidden.single_input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -24688,7 +24689,8 @@
         "button.restart",
         "button.reset_meter",
         "alarm_heat",
-        "hidden.single_button_pressed"
+        "hidden.single_button_pressed",
+        "hidden.single_input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -25042,7 +25044,8 @@
         "alarm_heat",
         "alarm_shelly_overcurrent",
         "alarm_shelly_overvoltage",
-        "hidden.single_button_pressed"
+        "hidden.single_button_pressed",
+        "hidden.single_input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -25425,7 +25428,8 @@
         "alarm_heat",
         "alarm_shelly_overcurrent",
         "alarm_shelly_overvoltage",
-        "hidden.single_button_pressed"
+        "hidden.single_button_pressed",
+        "hidden.single_input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -25801,7 +25805,8 @@
       "class": "button",
       "capabilities": [
         "alarm_heat",
-        "hidden.button_pressed"
+        "hidden.button_pressed",
+        "hidden.input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -26072,7 +26077,8 @@
       "class": "button",
       "capabilities": [
         "alarm_heat",
-        "hidden.button_pressed"
+        "hidden.button_pressed",
+        "hidden.input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,
@@ -27061,7 +27067,9 @@
         "measure_power",
         "meter_power",
         "button.reset_meter",
-        "button.calibration"
+        "button.calibration",
+        "hidden.button_pressed",
+        "hidden.input_switch_changed"
       ],
       "zwave": {
         "manufacturerId": 1120,

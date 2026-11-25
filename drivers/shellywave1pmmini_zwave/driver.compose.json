@@ -13,7 +13,8 @@
     "alarm_heat",
     "alarm_shelly_overcurrent",
     "alarm_shelly_overvoltage",
-    "hidden.single_button_pressed"
+    "hidden.single_button_pressed",
+    "hidden.single_input_switch_changed"
   ],
   "zwave": {
     "manufacturerId": 1120,
