@@ -15,10 +15,13 @@ import { safeAddCapability, safeRemoveCapability } from '../../safeFunctions.js'
 export async function configureDevice(
   device: ShellyZWaveDevice,
   buttonCount: number,
-  { noDetachedSetting = false } = {},
+  {
+    noDetachedSetting = false,
+    switchEndpointOffset,
+  }: { noDetachedSetting?: boolean; switchEndpointOffset?: number } = {},
 ): Promise<void> {
   await ButtonZWaveHandler.configureDevice(device);
-  await SwitchZWaveHandler.configureDevice(device, buttonCount);
+  await SwitchZWaveHandler.configureDevice(device, buttonCount, { switchEndpointOffset });
 
   const settings: Record<string, string> = {};
 

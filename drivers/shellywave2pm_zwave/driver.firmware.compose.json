@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- Fixed Multichannel Association on EP 2"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 2,
+        "productId": 129
+      },
+      "files": [
+        {
+          "name": "US[16.05].gbl",
+          "integrity": "sha3-512:7ddbefd5b677850e05ea8810bfb6816b8858be59392eec679a74d072dfd94152624557b983ae7504f101e2487a553413ac9b66480875d96fc965712ab830228f",
+          "size": 277004,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[16.05].gbl",
+          "integrity": "sha3-512:4e24904b3e812fd655087d2c665732cf9ac7d135f4b4c86b78def55aa01dcdc995e4f1cdd33f6ee450997ef4f90c153ea314466d0e39a15f1673841e4852e160",
+          "size": 277016,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[16.05].gbl",
+          "integrity": "sha3-512:4ba83108eba2489e9389e968f57d6180e814c0cd010b38feab849fefc37451e0f2259d3175434c37df33715c2e711e5b86df72113da610efd46ade89aab394a9",
+          "size": 277016,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "16.5.0"
+    }
+  ]
+}

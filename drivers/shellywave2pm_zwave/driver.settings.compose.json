@@ -1,0 +1,38 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Switch-Output Settings",
+      "nl": "Switch-Output instellingen"
+    },
+    "children": [
+      {
+        "$extends": "zwaveSwitchTypeSW1"
+      },
+      {
+        "$extends": "zwaveSwitchTypeSW2"
+      },
+      {
+        "$extends": "zwaveReverseInputsO1O2"
+      },
+      {
+        "$extends": "zwaveReverseOutputsO1O2"
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Device Settings",
+      "nl": "Apparaatinstellingen"
+    },
+    "children": [
+      {
+        "$extends": "zwaveSwitchDetachedModeSW1"
+      },
+      {
+        "$extends": "zwaveSwitchDetachedModeSW2"
+      }
+    ]
+  }
+]
