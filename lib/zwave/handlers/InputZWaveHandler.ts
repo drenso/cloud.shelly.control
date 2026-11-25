@@ -122,7 +122,7 @@ export function getButtonIndices(
   const settings = device.getSettings();
 
   for (let i = 0; i < buttonCount; i++) {
-    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] !== '0';
+    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] === '0';
     const detached = noDetachedSetting ? true : settings[`zwaveSwitchDetachedModeSW${i + 1}`] === '1';
     if (detached && momentary) {
       buttons.push(i);
@@ -145,7 +145,7 @@ export function getSwitchIndices(
   const settings = device.getSettings();
 
   for (let i = 0; i < buttonCount; i++) {
-    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] !== '0';
+    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] === '0';
     const detached = noDetachedSetting ? true : settings[`zwaveSwitchDetachedModeSW${i + 1}`] === '1';
     if (detached && !momentary) {
       switches.push(i);
