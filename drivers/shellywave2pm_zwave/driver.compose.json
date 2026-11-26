@@ -32,149 +32,19 @@
             },
             "children": [
               {
-                "id": "zwaveRestoreStateO1",
-                "type": "dropdown",
-                "label": {
-                  "en": "Restore state of O1 after power failure",
-                  "nl": "Herstel status van O1 na stroom uitval"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Output 1 saves last on/off status and restores it after a power failure",
-                      "nl": "Output 1 hersteld on/off status na stroom uitval"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Output 1 does not save on/off status and does not restore it after a power failure, it remains off",
-                      "nl": "Output 1 is standaard uit na stroom uitval"
-                    }
-                  }
-                ],
-                "zwave": {
-                  "index": 17,
-                  "size": 1
-                }
+                "$extends": "zwaveRestoreStateO1"
               },
               {
-                "id": "zwaveAutoTimerUnitO1",
-                "type": "dropdown",
-                "label": {
-                  "en": "Auto ON/OFF O1 timer unit",
-                  "nl": "Automatisch AAN/UIT O1 timer eenheid"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Seconds",
-                      "nl": "Seconden"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Milliseconds",
-                      "nl": "Milliseconden"
-                    }
-                  }
-                ],
-                "hint": {
-                  "en": "Defines the time unit used for the output 1 auto ON and OFF timers.",
-                  "nl": "Bepaalt de tijdseenheid voor de automatische output 1 AAN en UIT timers."
-                },
-                "zwave": {
-                  "index": 25,
-                  "size": 1
-                }
+                "$extends": "zwaveAutoTimerUnitO1"
               },
               {
-                "id": "zwaveAutoOffO1",
-                "type": "number",
-                "label": {
-                  "en": "Auto OFF O1 with timer",
-                  "nl": "Automatisch UIT O1 met timer"
-                },
-                "value": 0,
-                "attr": {
-                  "min": 0,
-                  "max": 32535
-                },
-                "units": {
-                  "en": "(m)s",
-                  "nl": "(m)s"
-                },
-                "hint": {
-                  "en": "Defines the time after which output 1 is turned off automatically. Note: setting this parameter to zero will disable automatically turning off.",
-                  "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch uitzet. Let op: het instellen van deze parameter op nul schakelt het automatisch uit gaan uit."
-                },
-                "zwave": {
-                  "index": 19,
-                  "size": 2
-                }
+                "$extends": "zwaveAutoOffO1"
               },
               {
-                "id": "zwaveAutoOnO1",
-                "type": "number",
-                "label": {
-                  "en": "Auto ON O1 with timer",
-                  "nl": "Automatisch AAN O1 met timer"
-                },
-                "value": 0,
-                "attr": {
-                  "min": 0,
-                  "max": 32535
-                },
-                "units": {
-                  "en": "(m)s",
-                  "nl": "(m)s"
-                },
-                "hint": {
-                  "en": "Defines the time after which output 1 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
-                  "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
-                },
-                "zwave": {
-                  "index": 20,
-                  "size": 2
-                }
+                "$extends": "zwaveAutoOnO1"
               },
               {
-                "id": "zwaveContactTypeO1",
-                "type": "dropdown",
-                "label": {
-                  "en": "Contact type O1 - NO/NC",
-                  "nl": "Contacttype O1 - NO/NC"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Normally open (NO)",
-                      "nl": "Normaal open (NO)"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Normally closed (NC)",
-                      "nl": "Normaal gesloten (NC)"
-                    }
-                  }
-                ],
-                "hint": {
-                  "en": "Defines the type of relay contact type for output 1.",
-                  "nl": "Bepaalt het type van relay contact voor output 1."
-                },
-                "zwave": {
-                  "index": 23,
-                  "size": 1
-                }
+                "$extends": "zwaveContactTypeO1"
               }
             ]
           },
@@ -186,54 +56,10 @@
             },
             "children": [
               {
-                "id": "zwavePowerReportOnChangeO1",
-                "zwave": {
-                  "index": 36,
-                  "size": 1
-                },
-                "type": "number",
-                "label": {
-                  "en": "Power report on change for O1",
-                  "nl": "Power report bij wijziging voor O1"
-                },
-                "value": 50,
-                "attr": {
-                  "min": 0,
-                  "max": 100
-                },
-                "units": {
-                  "en": "%",
-                  "nl": "%"
-                },
-                "hint": {
-                  "en": "Defines the minimum change in consumed power for output 1 that will result in sending new report to Homey.",
-                  "nl": "Bepaalt de minimum wijziging in stroomverbruik voor output 1 dat nodig is om een status update naar Homey te versturen."
-                }
+                "$extends": "zwavePowerReportOnChangeO1"
               },
               {
-                "id": "zwaveMinimalTimePowerReportO1",
-                "zwave": {
-                  "index": 39,
-                  "size": 1
-                },
-                "type": "number",
-                "label": {
-                  "en": "Minimal time between reports for O1",
-                  "nl": "Minimale tijd tussen reports voor O1"
-                },
-                "value": 30,
-                "attr": {
-                  "min": 10,
-                  "max": 120
-                },
-                "units": {
-                  "en": "s",
-                  "nl": "s"
-                },
-                "hint": {
-                  "en": "Defines the minimum time between sending reports to Homey for output 1.",
-                  "nl": "Bepaalt de minimum tijd tussen status updates naar Homey voor output 1."
-                }
+                "$extends": "zwaveMinimalTimePowerReportO1"
               }
             ]
           }
@@ -259,149 +85,19 @@
             },
             "children": [
               {
-                "id": "zwaveRestoreStateO2",
-                "type": "dropdown",
-                "label": {
-                  "en": "Restore state of O2 after power failure",
-                  "nl": "Herstel status van O2 na stroom uitval"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Output 2 saves last on/off status and restores it after a power failure",
-                      "nl": "Output 2 hersteld on/off status na stroom uitval"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Output 2 does not save on/off status and does not restore it after a power failure, it remains off",
-                      "nl": "Output 2 is standaard uit na stroom uitval"
-                    }
-                  }
-                ],
-                "zwave": {
-                  "index": 18,
-                  "size": 1
-                }
+                "$extends": "zwaveRestoreStateO2"
               },
               {
-                "id": "zwaveAutoTimerUnitO2",
-                "type": "dropdown",
-                "label": {
-                  "en": "Auto ON/OFF O2 timer unit",
-                  "nl": "Automatisch AAN/UIT O2 timer eenheid"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Seconds",
-                      "nl": "Seconden"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Milliseconds",
-                      "nl": "Milliseconden"
-                    }
-                  }
-                ],
-                "hint": {
-                  "en": "Defines the time unit used for the output 2 auto ON and OFF timers.",
-                  "nl": "Bepaalt de tijdseenheid voor de automatische output 2 AAN en UIT timers."
-                },
-                "zwave": {
-                  "index": 26,
-                  "size": 1
-                }
+                "$extends": "zwaveAutoTimerUnitO2"
               },
               {
-                "id": "zwaveAutoOffO2",
-                "type": "number",
-                "label": {
-                  "en": "Auto OFF O2 with timer",
-                  "nl": "Automatisch UIT O2 met timer"
-                },
-                "value": 0,
-                "attr": {
-                  "min": 0,
-                  "max": 32535
-                },
-                "units": {
-                  "en": "(m)s",
-                  "nl": "(m)s"
-                },
-                "hint": {
-                  "en": "Defines the time after which output 2 is turned off automatically. Note: setting this parameter to zero will disable automatically turning off.",
-                  "nl": "Bepaalt de tijd waarna output 2 zichzelf automatisch uitzet. Let op: het instellen van deze parameter op nul schakelt het automatisch uit gaan uit."
-                },
-                "zwave": {
-                  "index": 21,
-                  "size": 2
-                }
+                "$extends": "zwaveAutoOffO2"
               },
               {
-                "id": "zwaveAutoOnO2",
-                "type": "number",
-                "label": {
-                  "en": "Auto ON O2 with timer",
-                  "nl": "Automatisch AAN O2 met timer"
-                },
-                "value": 0,
-                "attr": {
-                  "min": 0,
-                  "max": 32535
-                },
-                "units": {
-                  "en": "(m)s",
-                  "nl": "(m)s"
-                },
-                "hint": {
-                  "en": "Defines the time after which output 2 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
-                  "nl": "Bepaalt de tijd waarna output 2 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
-                },
-                "zwave": {
-                  "index": 22,
-                  "size": 2
-                }
+                "$extends": "zwaveAutoOnO2"
               },
               {
-                "id": "zwaveContactTypeO2",
-                "type": "dropdown",
-                "label": {
-                  "en": "Contact type O2 - NO/NC",
-                  "nl": "Contacttype O2 - NO/NC"
-                },
-                "value": "0",
-                "values": [
-                  {
-                    "id": "0",
-                    "label": {
-                      "en": "Normally open (NO)",
-                      "nl": "Normaal open (NO)"
-                    }
-                  },
-                  {
-                    "id": "1",
-                    "label": {
-                      "en": "Normally closed (NC)",
-                      "nl": "Normaal gesloten (NC)"
-                    }
-                  }
-                ],
-                "hint": {
-                  "en": "Defines the type of relay contact type for output 2.",
-                  "nl": "Bepaalt het type van relay contact voor output 2."
-                },
-                "zwave": {
-                  "index": 24,
-                  "size": 1
-                }
+                "$extends": "zwaveContactTypeO2"
               }
             ]
           },
@@ -413,54 +109,10 @@
             },
             "children": [
               {
-                "id": "zwavePowerReportOnChangeO2",
-                "zwave": {
-                  "index": 37,
-                  "size": 1
-                },
-                "type": "number",
-                "label": {
-                  "en": "Power report on change for O2",
-                  "nl": "Power report bij wijziging voor O2"
-                },
-                "value": 50,
-                "attr": {
-                  "min": 0,
-                  "max": 100
-                },
-                "units": {
-                  "en": "%",
-                  "nl": "%"
-                },
-                "hint": {
-                  "en": "Defines the minimum change in consumed power for output 2 that will result in sending new report to Homey.",
-                  "nl": "Bepaalt de minimum wijziging in stroomverbruik voor output 2 dat nodig is om een status update naar Homey te versturen."
-                }
+                "$extends": "zwavePowerReportOnChangeO2"
               },
               {
-                "id": "zwaveMinimalTimePowerReportO2",
-                "zwave": {
-                  "index": 40,
-                  "size": 1
-                },
-                "type": "number",
-                "label": {
-                  "en": "Minimal time between reports for O2",
-                  "nl": "Minimale tijd tussen reports voor O2"
-                },
-                "value": 30,
-                "attr": {
-                  "min": 10,
-                  "max": 120
-                },
-                "units": {
-                  "en": "s",
-                  "nl": "s"
-                },
-                "hint": {
-                  "en": "Defines the minimum time between sending reports to Homey for output 2.",
-                  "nl": "Bepaalt de minimum tijd tussen status updates naar Homey voor output 2."
-                }
+                "$extends": "zwaveMinimalTimePowerReportO2"
               }
             ]
           }
