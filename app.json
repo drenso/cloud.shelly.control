@@ -24521,7 +24521,7 @@
                 "nl": "(m)s"
               },
               "hint": {
-                "en": "Defines the time after which output 1 is turned on automatically after been turned on. Note: setting this parameter to zero will disable automatically turning on.",
+                "en": "Defines the time after which output 1 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
                 "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
               },
               "zwave": {
@@ -24876,7 +24876,7 @@
                 "nl": "(m)s"
               },
               "hint": {
-                "en": "Defines the time after which output 1 is turned on automatically after been turned on. Note: setting this parameter to zero will disable automatically turning on.",
+                "en": "Defines the time after which output 1 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
                 "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
               },
               "zwave": {
@@ -25231,7 +25231,7 @@
                 "nl": "(m)s"
               },
               "hint": {
-                "en": "Defines the time after which output 1 is turned on automatically after been turned on. Note: setting this parameter to zero will disable automatically turning on.",
+                "en": "Defines the time after which output 1 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
                 "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
               },
               "zwave": {
@@ -25615,7 +25615,7 @@
                 "nl": "(m)s"
               },
               "hint": {
-                "en": "Defines the time after which output 1 is turned on automatically after been turned on. Note: setting this parameter to zero will disable automatically turning on.",
+                "en": "Defines the time after which output 1 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
                 "nl": "Bepaalt de tijd waarna output 1 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
               },
               "zwave": {
