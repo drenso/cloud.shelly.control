@@ -1,0 +1,17 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Device Settings",
+      "nl": "Apparaatinstellingen"
+    },
+    "children": [
+      {
+        "$extends": "zwavePowerReportOnChangeO1"
+      },
+      {
+        "$extends": "zwaveMinimalTimePowerReportO1"
+      }
+    ]
+  }
+]

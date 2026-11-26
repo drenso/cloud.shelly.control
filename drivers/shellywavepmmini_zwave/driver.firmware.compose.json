@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- Fixed Power measurment spams on capacitive loads\n- Fixed Product type ID to 0x0007"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 7,
+        "productId": 129
+      },
+      "files": [
+        {
+          "name": "US[v13.01].gbl",
+          "integrity": "sha3-512:65d0fd53da91795c3ee553af5ed7ce4408fdbc374d149cc69249183606e6d03c43f37ae8c53c0ff807544f57c649efc3b68ba9837d83fa024056b889f5dfae5d",
+          "size": 276220,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[v13.01].gbl",
+          "integrity": "sha3-512:60956cb23cea48d896607a50e18917e8310be946f990174ab3dfcf0d028f267321d88be90df1d6cc3eb05cbc5e5dc95a92f568d534fa28476bbf2dd0df54761f",
+          "size": 276220,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[v13.01].gbl",
+          "integrity": "sha3-512:5cf6dec77492669221b73a6b4ca337c02cbe8dccaec8bbe339e3eeea90a8623a26360b6acba984054476c5947842dff8bf9ac9a87bf3b964edd80be6a75aed5a",
+          "size": 276220,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "13.1.0"
+    }
+  ]
+}
