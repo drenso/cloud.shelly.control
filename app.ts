@@ -157,6 +157,10 @@ export default class ShellyApp extends Homey.App {
         });
       }
     } catch (e) {
+      if ((e as { code: string }).code === 'EHOSTUNREACH') {
+        this.error('Could not reach', newAddress);
+        return;
+      }
       this.error('Error during rediscovery:', e);
     }
   }
