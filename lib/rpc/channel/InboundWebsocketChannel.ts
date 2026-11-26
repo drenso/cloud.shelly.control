@@ -81,7 +81,7 @@ export default class InboundWebsocketChannel implements RpcChannel {
         this.debug('Redirected to HTTPS');
         await this.onHttpsUpgrade?.();
       } else {
-        throw new Error(`Unexpected ws redirect from ${this.address} to ${url}`);
+        this.error(`Unexpected ws redirect from ${this.address} to ${url}`);
       }
     });
     this.ws.on('open', async () => {
