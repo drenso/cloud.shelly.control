@@ -82,6 +82,7 @@ export default class InboundWebsocketChannel implements RpcChannel {
         await this.onHttpsUpgrade?.();
       } else {
         this.error(`Unexpected ws redirect from ${this.address} to ${url}`);
+        this.disconnect();
       }
     });
     this.ws.on('open', async () => {
