@@ -1,4 +1,5 @@
 import * as InputZWaveHandler from '../../lib/zwave/handlers/InputZWaveHandler.js';
+import * as OverCurrentZWaveHandler from '../../lib/zwave/handlers/OverCurrentZWaveHandler.js';
 import ShellyZWaveDevice, { type FirmwareVersion } from '../../lib/zwave/ZWaveDevice.js';
 import type { ButtonEventType } from '../../lib/flow/buttonFlows.js';
 import type {
@@ -24,24 +25,7 @@ export default class ShellyWave2PMZWaveDevice
     this.registerCapability('meter_power', 'METER');
 
     this.registerCapability('alarm_heat', 'NOTIFICATION');
-    this.registerCapability('alarm_shelly_overcurrent', 'NOTIFICATION', {
-      get: 'NOTIFICATION_GET',
-      getParser: () => ({
-        'V1 Alarm Type': 0,
-        'Notification Type': 'Power Management',
-        Event: 6,
-      }),
-      report: 'NOTIFICATION_REPORT',
-      reportParser: (report: NotificationReport) => {
-        if (!report) {
-          return false;
-        }
-        if (report['Notification Type'] !== 'Power Management') {
-          return false;
-        }
-        return report['Event (Parsed)'] === 'Over-current detected';
-      },
-    });
+    await OverCurrentZWaveHandler.configureDevice(this);
   }
 
   public async onSettings(
