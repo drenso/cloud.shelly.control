@@ -35,6 +35,7 @@ export type ListDeviceProperties = {
     };
   };
   class?: string;
+  energy?: Record<string, unknown>;
 };
 
 export type ShellyDiscoveryResult = DiscoveryResultMDNSSD & {

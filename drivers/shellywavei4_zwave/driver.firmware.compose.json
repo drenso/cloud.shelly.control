@@ -1,0 +1,38 @@
+{
+  "updates": [
+    {
+      "changelog": {
+        "en": "- SDK with fixed dead node issue\n- Fixed Association\n- Fixed Part number\n- Fixed Indicator CC support\n- Fixed short press for Central Scene manager (200ms -> 500ms)\n- Fixed Binary Switch now reports state at boot up\n- Fixed Parameters 1 - 4 to properly handle value 1\n- Added Parameter 118 (switch exclusion enable/disable)\n- Added Parameter 117 - Reboot device\n- Added Support for EU LR\n- Changed Association handling into a more modern, safe, implementation\n- Other minor fixes and improvements"
+      },
+      "device": {
+        "manufacturerId": 1120,
+        "productTypeId": 9,
+        "productId": 129
+      },
+      "files": [
+        {
+          "name": "US[v13.01].gbl",
+          "integrity": "sha3-512:2eea1f7280d56a05cbfe7ed933ca69dfe631a71261af12b16cd67c3e2d1513f4be467aaeb9cd0a18121eca349b7f142629a1702ec6fada91b53b640633b8ea1b",
+          "size": 272492,
+          "targetId": 0,
+          "region": "US"
+        },
+        {
+          "name": "EU[v13.01].gbl",
+          "integrity": "sha3-512:2a5be45af7f6fc8e20377d9e836ec4d353272465d7bb30f53fef60ff631b8e10601afac38fa53844560d901b7a311594111bf4e1de0808a0feedb7de50272cce",
+          "size": 272492,
+          "targetId": 0,
+          "region": "EU"
+        },
+        {
+          "name": "ANZ[v13.01].gbl",
+          "integrity": "sha3-512:d875c0745f8a729446efffa95c887ae639d1f240dc1951d012fa2141fe4b2c9134c72923a99f388c003da6059a3131e7599294ad2f22b815c62c07d669aa4a91",
+          "size": 272492,
+          "targetId": 0,
+          "region": "ANZ"
+        }
+      ],
+      "version": "13.1.0"
+    }
+  ]
+}

@@ -11,14 +11,18 @@ export type SwitchBinaryReport = {
   Value: string;
 };
 
-export async function configureDevice(device: ShellyZWaveDevice, buttonCount: number): Promise<void> {
+export async function configureDevice(
+  device: ShellyZWaveDevice,
+  buttonCount: number,
+  { switchEndpointOffset = 2 } = {},
+): Promise<void> {
   if (device.node.CommandClass['COMMAND_CLASS_SWITCH_BINARY'] === undefined) {
     return;
   }
 
   for (let i = 0; i < buttonCount; i++) {
     device.registerMultiChannelReportListener(
-      2 + i,
+      switchEndpointOffset + i,
       'SWITCH_BINARY',
       'SWITCH_BINARY_REPORT',
       (payload: SwitchBinaryReport) => {

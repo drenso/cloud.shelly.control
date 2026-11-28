@@ -15,10 +15,13 @@ import { safeAddCapability, safeRemoveCapability } from '../../safeFunctions.js'
 export async function configureDevice(
   device: ShellyZWaveDevice,
   buttonCount: number,
-  { noDetachedSetting = false } = {},
+  {
+    noDetachedSetting = false,
+    switchEndpointOffset,
+  }: { noDetachedSetting?: boolean; switchEndpointOffset?: number } = {},
 ): Promise<void> {
   await ButtonZWaveHandler.configureDevice(device);
-  await SwitchZWaveHandler.configureDevice(device, buttonCount);
+  await SwitchZWaveHandler.configureDevice(device, buttonCount, { switchEndpointOffset });
 
   const settings: Record<string, string> = {};
 
@@ -122,7 +125,7 @@ export function getButtonIndices(
   const settings = device.getSettings();
 
   for (let i = 0; i < buttonCount; i++) {
-    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] !== '0';
+    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] === '0';
     const detached = noDetachedSetting ? true : settings[`zwaveSwitchDetachedModeSW${i + 1}`] === '1';
     if (detached && momentary) {
       buttons.push(i);
@@ -145,7 +148,7 @@ export function getSwitchIndices(
   const settings = device.getSettings();
 
   for (let i = 0; i < buttonCount; i++) {
-    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] !== '0';
+    const momentary = settings[`zwaveSwitchTypeSW${i + 1}`] === '0';
     const detached = noDetachedSetting ? true : settings[`zwaveSwitchDetachedModeSW${i + 1}`] === '1';
     if (detached && !momentary) {
       switches.push(i);

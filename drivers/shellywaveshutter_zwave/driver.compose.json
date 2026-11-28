@@ -4,7 +4,15 @@
     "en": "Wave Shutter"
   },
   "class": "windowcoverings",
-  "capabilities": ["windowcoverings_set", "measure_power", "meter_power", "button.reset_meter", "button.calibration"],
+  "capabilities": [
+    "windowcoverings_set",
+    "measure_power",
+    "meter_power",
+    "button.reset_meter",
+    "button.calibration",
+    "hidden.button_pressed",
+    "hidden.input_switch_changed"
+  ],
   "zwave": {
     "manufacturerId": 1120,
     "productTypeId": [3],

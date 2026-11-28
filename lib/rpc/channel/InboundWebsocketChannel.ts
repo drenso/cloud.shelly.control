@@ -76,11 +76,13 @@ export default class InboundWebsocketChannel implements RpcChannel {
     });
 
     this.ws.on('redirect', async url => {
-      if (url.startsWith('wss://') && url.slice('wss://'.length, -'/rpc'.length) === this.address) {
+      const parsedUrl = new URL(url);
+      if (parsedUrl.protocol === 'wss:' && parsedUrl.host === this.address) {
         this.debug('Redirected to HTTPS');
         await this.onHttpsUpgrade?.();
       } else {
-        throw new Error(`Unexpected ws redirect to ${url}`);
+        this.error(`Unexpected ws redirect from ${this.address} to ${url}`);
+        this.disconnect();
       }
     });
     this.ws.on('open', async () => {

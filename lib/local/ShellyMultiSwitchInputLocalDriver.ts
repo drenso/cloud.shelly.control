@@ -37,6 +37,9 @@ export default abstract class ShellyMultiSwitchInputLocalDriver extends ShellyLo
             components: this.componentsToSplit.map(splitComponent => `${splitComponent}:${componentId}`),
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
+          },
         });
       }
     }

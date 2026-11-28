@@ -44,5 +44,6 @@
       { "$extends": "Camera.video.antiflicker" }
     ]
   },
+  { "$extends": "installBleForwardingScript" },
   { "$extends": "_shelly_device_info" }
 ]

@@ -1,0 +1,32 @@
+{
+  "type": "dropdown",
+  "label": {
+    "en": "Auto ON/OFF O1 timer unit",
+    "nl": "Automatisch AAN/UIT O1 timer eenheid"
+  },
+  "value": "0",
+  "values": [
+    {
+      "id": "0",
+      "label": {
+        "en": "Seconds",
+        "nl": "Seconden"
+      }
+    },
+    {
+      "id": "1",
+      "label": {
+        "en": "Milliseconds",
+        "nl": "Milliseconden"
+      }
+    }
+  ],
+  "hint": {
+    "en": "Defines the time unit used for the output 1 auto ON and OFF timers.",
+    "nl": "Bepaalt de tijdseenheid voor de automatische output 1 AAN en UIT timers."
+  },
+  "zwave": {
+    "index": 25,
+    "size": 1
+  }
+}

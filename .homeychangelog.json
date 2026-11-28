@@ -118,5 +118,8 @@
   },
   "1.4.0": {
     "en": "Add LAN support for Cury Fragrance Diffuser & Yihao Blinds Motor. Add Z-Wave support for Wave 1 (Mini) & 1PM (Mini). Add missing input type setting for 1 Gen3 & 1 Gen4. Add detached button mode support for Z-Wave devices. Add latest Z-Wave firmware files for currently supported Z-Wave devices."
+  },
+  "1.5.0": {
+    "en": "Add LAN support for Outdoor Plug S Gen3. Add Z-Wave support for Wave i4(DC). Improve Z-Wave button handling. Add detached switch support to Z-Wave Shutter. Add missing BLE forwarder option to Camera. Improve cumulative energy support with newly added devices."
   }
 }

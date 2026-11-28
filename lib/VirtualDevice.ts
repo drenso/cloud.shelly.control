@@ -1104,6 +1104,10 @@ class LocalConnection {
 
   private async onHttpsUpgrade(): Promise<void> {
     this.httpChannel.useHttps = true;
-    await this.virtualDevice.app.updateVirtualDevice(this.virtualDevice);
+    try {
+      await this.virtualDevice.app.updateVirtualDevice(this.virtualDevice);
+    } catch (e) {
+      this.virtualDevice.error('Error while saving virtual device after HTTPS upgrade:', e);
+    }
   }
 }

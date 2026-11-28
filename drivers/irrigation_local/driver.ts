@@ -37,6 +37,9 @@ export default class IrrigationControllerLocalDriver extends ShellyLocalDriver {
             components: [component.key],
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
+          },
         });
         continue;
       }

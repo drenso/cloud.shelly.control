@@ -101,15 +101,9 @@ export default abstract class ShellyZWaveDevice extends ZwaveDevice {
       });
     }
 
-    const [major, minor] = await this.getFirmwareVersion();
-    const [minimumMajor, minimumMinor] = this.minimumFirmwareVersion;
-    if (major < minimumMajor || (major === minimumMajor && minor < minimumMinor)) {
-      this.log('Firmware outdated!');
-      await this.setWarning(
-        this.homey.__('device.firmware_too_old', { version: `${minimumMajor}.${minimumMinor}` }),
-      ).catch(err => this.error('Error while setting device warning due to outdated firmware:', err));
-    } else {
-      await this.unsetWarning().catch(err => this.error('Error while removing device warning:', err));
+    // COMMAND_CLASS_VERSION is only available on the root node
+    if (!this.node.isMultiChannelNode) {
+      await this.checkMinimumFirmwareVersion();
     }
 
     await this.setAvailable().catch(err =>
@@ -168,6 +162,19 @@ export default abstract class ShellyZWaveDevice extends ZwaveDevice {
           nl: 'Reset alle configuratie parameters naar de fabrieksinstellingen en apparaat verlaat het netwerk.',
         },
       });
+    }
+  }
+
+  private async checkMinimumFirmwareVersion(): Promise<void> {
+    const [major, minor] = await this.getFirmwareVersion();
+    const [minimumMajor, minimumMinor] = this.minimumFirmwareVersion;
+    if (major < minimumMajor || (major === minimumMajor && minor < minimumMinor)) {
+      this.log('Firmware outdated!');
+      await this.setWarning(
+        this.homey.__('device.firmware_too_old', { version: `${minimumMajor}.${minimumMinor}` }),
+      ).catch(err => this.error('Error while setting device warning due to outdated firmware:', err));
+    } else {
+      await this.unsetWarning().catch(err => this.error('Error while removing device warning:', err));
     }
   }
 

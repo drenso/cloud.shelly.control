@@ -1,0 +1,24 @@
+{
+  "type": "number",
+  "label": {
+    "en": "Auto ON O2 with timer",
+    "nl": "Automatisch AAN O2 met timer"
+  },
+  "value": 0,
+  "attr": {
+    "min": 0,
+    "max": 32535
+  },
+  "units": {
+    "en": "(m)s",
+    "nl": "(m)s"
+  },
+  "hint": {
+    "en": "Defines the time after which output 2 is turned on automatically after being turned off. Note: setting this parameter to zero will disable automatically turning on.",
+    "nl": "Bepaalt de tijd waarna output 2 zichzelf automatisch aanzet na te zijn uitgeschakeld. Let op: het instellen van deze parameter op nul schakelt het automatisch aan gaan uit."
+  },
+  "zwave": {
+    "index": 22,
+    "size": 2
+  }
+}

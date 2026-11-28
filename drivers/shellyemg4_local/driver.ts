@@ -5,6 +5,8 @@ import EM1, { type EM1Config } from '../../lib/component/components/EM1.js';
 import Switch, { type SwitchConfig } from '../../lib/component/components/Switch.js';
 
 export default class ShellyEMGen4LocalDriver extends ShellyLocalDriver {
+  public cumulativeEnergyAvailable = true;
+
   public async assembleHomeyDevices(
     selectedDevice: ShellyLocalListDeviceProperties,
     components: ShellyGetComponentsResponseComponent[],
@@ -41,6 +43,12 @@ export default class ShellyEMGen4LocalDriver extends ShellyLocalDriver {
           store: {
             ...selectedDevice.store,
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
+          },
+          settings: {
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
+          },
+          energy: {
+            cumulative: this.cumulativeEnergyAvailable,
           },
           capabilities: ['button.restart'],
         });

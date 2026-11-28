@@ -5,6 +5,9 @@ import EM1, { type EM1Config } from '../../lib/component/components/EM1.js';
 import Switch, { type SwitchConfig } from '../../lib/component/components/Switch.js';
 
 export default class ShellyProEM4LocalDriver extends ShellyLocalDriver {
+  public cumulativeEnergyAvailable = true;
+  public cumulativeEnergyByDefault = true;
+
   public async assembleHomeyDevices(
     selectedDevice: ShellyLocalListDeviceProperties,
     components: ShellyGetComponentsResponseComponent[],
@@ -43,6 +46,12 @@ export default class ShellyProEM4LocalDriver extends ShellyLocalDriver {
             components: splitComponents.map(splitComponent => `${splitComponent}:${componentId}`),
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: this.cumulativeEnergyByDefault,
+          },
+          energy: {
+            cumulative: this.cumulativeEnergyAvailable,
+          },
         });
       } else if (componentType === 'switch') {
         const switchId = parseInt(componentId!, 10);
@@ -64,6 +73,9 @@ export default class ShellyProEM4LocalDriver extends ShellyLocalDriver {
             components: [`switch:${componentId}`],
           },
           capabilities: ['button.restart'],
+          settings: {
+            energy_cumulative_include: false,
+          },
         });
       }
     }

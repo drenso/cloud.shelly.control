@@ -1,0 +1,32 @@
+{
+  "type": "dropdown",
+  "label": {
+    "en": "Contact type O2 - NO/NC",
+    "nl": "Contacttype O2 - NO/NC"
+  },
+  "value": "0",
+  "values": [
+    {
+      "id": "0",
+      "label": {
+        "en": "Normally open (NO)",
+        "nl": "Normaal open (NO)"
+      }
+    },
+    {
+      "id": "1",
+      "label": {
+        "en": "Normally closed (NC)",
+        "nl": "Normaal gesloten (NC)"
+      }
+    }
+  ],
+  "hint": {
+    "en": "Defines the type of relay contact type for output 2.",
+    "nl": "Bepaalt het type van relay contact voor output 2."
+  },
+  "zwave": {
+    "index": 24,
+    "size": 1
+  }
+}

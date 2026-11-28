@@ -31,18 +31,27 @@ export default class ShellyWaveShutterZWaveDevice
       settings['zwaveSwitchTypeSW1SW2'] = switchType.toFixed();
       const momentary = switchType === 0;
 
-      let anyButtonDetached = false;
+      let anyInputReportsButtonPresses = false;
+      let anyInputReportsSwitchChanges = false;
 
       for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-        const buttonDetached = switchDetachedResponses[buttonIndex].readUInt8() === 1;
-        settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = buttonDetached ? '1' : '0';
-        anyButtonDetached ||= buttonDetached;
+        const detached = switchDetachedResponses[buttonIndex].readUInt8() === 1;
+        settings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] = detached ? '1' : '0';
+
+        anyInputReportsButtonPresses ||= detached && momentary;
+        anyInputReportsSwitchChanges ||= detached && !momentary;
       }
 
-      if (anyButtonDetached && momentary) {
+      if (anyInputReportsButtonPresses) {
         await safeAddCapability(this, 'hidden.button_pressed');
       } else {
         await safeRemoveCapability(this, 'hidden.button_pressed');
+      }
+
+      if (anyInputReportsSwitchChanges) {
+        await safeAddCapability(this, 'hidden.input_switch_changed');
+      } else {
+        await safeRemoveCapability(this, 'hidden.input_switch_changed');
       }
 
       await this.setSettings(settings);
@@ -92,17 +101,25 @@ export default class ShellyWaveShutterZWaveDevice
     ) {
       const momentary = newSettings['zwaveSwitchTypeSW1SW2'] === '0';
 
-      let anyButtonDetached = false;
+      let anyInputReportsButtonPresses = false;
+      let anyInputReportsSwitchChanges = false;
 
       for (let buttonIndex = 0; buttonIndex < buttonCount; buttonIndex++) {
-        const buttonDetached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
-        anyButtonDetached ||= buttonDetached;
+        const detached = newSettings[`zwaveSwitchDetachedModeSW${buttonIndex + 1}`] === '1';
+        anyInputReportsButtonPresses ||= detached && momentary;
+        anyInputReportsSwitchChanges ||= detached && !momentary;
       }
 
-      if (anyButtonDetached && momentary) {
+      if (anyInputReportsButtonPresses) {
         await safeAddCapability(this, 'hidden.button_pressed');
       } else {
         await safeRemoveCapability(this, 'hidden.button_pressed');
+      }
+
+      if (anyInputReportsSwitchChanges) {
+        await safeAddCapability(this, 'hidden.input_switch_changed');
+      } else {
+        await safeRemoveCapability(this, 'hidden.input_switch_changed');
       }
     }
 

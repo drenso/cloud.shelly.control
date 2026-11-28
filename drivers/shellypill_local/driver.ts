@@ -63,6 +63,9 @@ export default class ShellyPillLocalDriver extends ShellyLocalDriver {
           components: [component.key],
         },
         capabilities: ['button.restart'],
+        settings: {
+          energy_cumulative_include: this.cumulativeEnergyByDefault,
+        },
       });
     }
 
